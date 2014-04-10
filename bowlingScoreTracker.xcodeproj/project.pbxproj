@@ -1,0 +1,674 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		53670BDC18F171CD0027F9EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670BDB18F171CD0027F9EE /* Foundation.framework */; };
+		53670BDE18F171CD0027F9EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670BDD18F171CD0027F9EE /* CoreGraphics.framework */; };
+		53670BE018F171CD0027F9EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670BDF18F171CD0027F9EE /* UIKit.framework */; };
+		53670BE618F171CD0027F9EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53670BE418F171CD0027F9EE /* InfoPlist.strings */; };
+		53670BE818F171CD0027F9EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 53670BE718F171CD0027F9EE /* main.m */; };
+		53670BEC18F171CD0027F9EE /* BST_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53670BEB18F171CD0027F9EE /* BST_AppDelegate.m */; };
+		53670BEF18F171CD0027F9EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53670BED18F171CD0027F9EE /* Main.storyboard */; };
+		53670BF418F171CD0027F9EE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53670BF318F171CD0027F9EE /* Images.xcassets */; };
+		53670BFB18F171CD0027F9EE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670BFA18F171CD0027F9EE /* XCTest.framework */; };
+		53670BFC18F171CD0027F9EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670BDB18F171CD0027F9EE /* Foundation.framework */; };
+		53670BFD18F171CD0027F9EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670BDF18F171CD0027F9EE /* UIKit.framework */; };
+		53670C0518F171CD0027F9EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53670C0318F171CD0027F9EE /* InfoPlist.strings */; };
+		53670C0718F171CD0027F9EE /* bowlingScoreTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 53670C0618F171CD0027F9EE /* bowlingScoreTrackerTests.m */; };
+		53670C1518F172300027F9EE /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53670C1418F172300027F9EE /* SWRevealViewController.m */; };
+		53670C1718F1731D0027F9EE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670C1618F1731D0027F9EE /* Parse.framework */; };
+		53670C2218F1737B0027F9EE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670C1818F1737B0027F9EE /* AudioToolbox.framework */; };
+		53670C2318F1737B0027F9EE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670C1918F1737B0027F9EE /* CFNetwork.framework */; };
+		53670C2418F1737B0027F9EE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670C1A18F1737B0027F9EE /* CoreLocation.framework */; };
+		53670C2518F1737B0027F9EE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670C1B18F1737B0027F9EE /* libz.dylib */; };
+		53670C2618F1737B0027F9EE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670C1C18F1737B0027F9EE /* MobileCoreServices.framework */; };
+		53670C2718F1737B0027F9EE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670C1D18F1737B0027F9EE /* QuartzCore.framework */; };
+		53670C2818F1737B0027F9EE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670C1E18F1737B0027F9EE /* Security.framework */; };
+		53670C2918F1737B0027F9EE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670C1F18F1737B0027F9EE /* Social.framework */; };
+		53670C2A18F1737B0027F9EE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670C2018F1737B0027F9EE /* StoreKit.framework */; };
+		53670C2B18F1737B0027F9EE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670C2118F1737B0027F9EE /* SystemConfiguration.framework */; };
+		53670C2D18F178110027F9EE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670C2C18F178110027F9EE /* Accounts.framework */; };
+		53670C2F18F178170027F9EE /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670C2E18F178170027F9EE /* Twitter.framework */; };
+		53670C3118F17F300027F9EE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670C3018F17F300027F9EE /* FacebookSDK.framework */; };
+		53670C4218F1AEC40027F9EE /* BST_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53670C4118F1AEC40027F9EE /* BST_LoginViewController.m */; };
+		53670C4518F1AED40027F9EE /* BST_SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53670C4418F1AED40027F9EE /* BST_SignUpViewController.m */; };
+		53670C4A18F1C3CC0027F9EE /* BST_LoggedInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53670C4918F1C3CC0027F9EE /* BST_LoggedInViewController.m */; };
+		53C3401B18F1F4C600FBBD24 /* BST_MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C3401A18F1F4C600FBBD24 /* BST_MenuTableViewController.m */; };
+		53CEF07318F5F401006B20DC /* BST_SessionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CEF07218F5F401006B20DC /* BST_SessionsTableViewController.m */; };
+		53CEF07818F631AD006B20DC /* BST_VenueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CEF07718F631AD006B20DC /* BST_VenueTableViewController.m */; };
+		53CEF07C18F66587006B20DC /* BST_GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CEF07B18F66587006B20DC /* BST_GameViewController.m */; };
+		53F5810918F217320098FE58 /* BST_UserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F5810818F217320098FE58 /* BST_UserSettingsViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		53670BFE18F171CD0027F9EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53670BD018F171CD0027F9EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 53670BD718F171CD0027F9EE;
+			remoteInfo = bowlingScoreTracker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		53670BD818F171CD0027F9EE /* bowlingScoreTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bowlingScoreTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		53670BDB18F171CD0027F9EE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		53670BDD18F171CD0027F9EE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		53670BDF18F171CD0027F9EE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		53670BE318F171CD0027F9EE /* bowlingScoreTracker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bowlingScoreTracker-Info.plist"; sourceTree = "<group>"; };
+		53670BE518F171CD0027F9EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		53670BE718F171CD0027F9EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		53670BE918F171CD0027F9EE /* bowlingScoreTracker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bowlingScoreTracker-Prefix.pch"; sourceTree = "<group>"; };
+		53670BEA18F171CD0027F9EE /* BST_AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BST_AppDelegate.h; sourceTree = "<group>"; };
+		53670BEB18F171CD0027F9EE /* BST_AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BST_AppDelegate.m; sourceTree = "<group>"; };
+		53670BEE18F171CD0027F9EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		53670BF318F171CD0027F9EE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		53670BF918F171CD0027F9EE /* bowlingScoreTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bowlingScoreTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		53670BFA18F171CD0027F9EE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		53670C0218F171CD0027F9EE /* bowlingScoreTrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bowlingScoreTrackerTests-Info.plist"; sourceTree = "<group>"; };
+		53670C0418F171CD0027F9EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		53670C0618F171CD0027F9EE /* bowlingScoreTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bowlingScoreTrackerTests.m; sourceTree = "<group>"; };
+		53670C1318F172300027F9EE /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		53670C1418F172300027F9EE /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		53670C1618F1731D0027F9EE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		53670C1818F1737B0027F9EE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		53670C1918F1737B0027F9EE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		53670C1A18F1737B0027F9EE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		53670C1B18F1737B0027F9EE /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		53670C1C18F1737B0027F9EE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		53670C1D18F1737B0027F9EE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		53670C1E18F1737B0027F9EE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		53670C1F18F1737B0027F9EE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		53670C2018F1737B0027F9EE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		53670C2118F1737B0027F9EE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		53670C2C18F178110027F9EE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		53670C2E18F178170027F9EE /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		53670C3018F17F300027F9EE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		53670C4018F1AEC40027F9EE /* BST_LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_LoginViewController.h; sourceTree = "<group>"; };
+		53670C4118F1AEC40027F9EE /* BST_LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_LoginViewController.m; sourceTree = "<group>"; };
+		53670C4318F1AED40027F9EE /* BST_SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_SignUpViewController.h; sourceTree = "<group>"; };
+		53670C4418F1AED40027F9EE /* BST_SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_SignUpViewController.m; sourceTree = "<group>"; };
+		53670C4818F1C3CC0027F9EE /* BST_LoggedInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_LoggedInViewController.h; sourceTree = "<group>"; };
+		53670C4918F1C3CC0027F9EE /* BST_LoggedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_LoggedInViewController.m; sourceTree = "<group>"; };
+		53C3401918F1F4C600FBBD24 /* BST_MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_MenuTableViewController.h; sourceTree = "<group>"; };
+		53C3401A18F1F4C600FBBD24 /* BST_MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_MenuTableViewController.m; sourceTree = "<group>"; };
+		53CEF07118F5F401006B20DC /* BST_SessionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_SessionsTableViewController.h; sourceTree = "<group>"; };
+		53CEF07218F5F401006B20DC /* BST_SessionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_SessionsTableViewController.m; sourceTree = "<group>"; };
+		53CEF07618F631AD006B20DC /* BST_VenueTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_VenueTableViewController.h; sourceTree = "<group>"; };
+		53CEF07718F631AD006B20DC /* BST_VenueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_VenueTableViewController.m; sourceTree = "<group>"; };
+		53CEF07A18F66587006B20DC /* BST_GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_GameViewController.h; sourceTree = "<group>"; };
+		53CEF07B18F66587006B20DC /* BST_GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_GameViewController.m; sourceTree = "<group>"; };
+		53F5810718F217320098FE58 /* BST_UserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_UserSettingsViewController.h; sourceTree = "<group>"; };
+		53F5810818F217320098FE58 /* BST_UserSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_UserSettingsViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		53670BD518F171CD0027F9EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53670C2F18F178170027F9EE /* Twitter.framework in Frameworks */,
+				53670C2D18F178110027F9EE /* Accounts.framework in Frameworks */,
+				53670C2218F1737B0027F9EE /* AudioToolbox.framework in Frameworks */,
+				53670C2318F1737B0027F9EE /* CFNetwork.framework in Frameworks */,
+				53670C2418F1737B0027F9EE /* CoreLocation.framework in Frameworks */,
+				53670C2518F1737B0027F9EE /* libz.dylib in Frameworks */,
+				53670C2618F1737B0027F9EE /* MobileCoreServices.framework in Frameworks */,
+				53670C2718F1737B0027F9EE /* QuartzCore.framework in Frameworks */,
+				53670C3118F17F300027F9EE /* FacebookSDK.framework in Frameworks */,
+				53670C2818F1737B0027F9EE /* Security.framework in Frameworks */,
+				53670C2918F1737B0027F9EE /* Social.framework in Frameworks */,
+				53670C2A18F1737B0027F9EE /* StoreKit.framework in Frameworks */,
+				53670C2B18F1737B0027F9EE /* SystemConfiguration.framework in Frameworks */,
+				53670BDE18F171CD0027F9EE /* CoreGraphics.framework in Frameworks */,
+				53670BE018F171CD0027F9EE /* UIKit.framework in Frameworks */,
+				53670C1718F1731D0027F9EE /* Parse.framework in Frameworks */,
+				53670BDC18F171CD0027F9EE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53670BF618F171CD0027F9EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53670BFB18F171CD0027F9EE /* XCTest.framework in Frameworks */,
+				53670BFD18F171CD0027F9EE /* UIKit.framework in Frameworks */,
+				53670BFC18F171CD0027F9EE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		53670BCF18F171CD0027F9EE = {
+			isa = PBXGroup;
+			children = (
+				53670BE118F171CD0027F9EE /* bowlingScoreTracker */,
+				53670C0018F171CD0027F9EE /* bowlingScoreTrackerTests */,
+				53670BDA18F171CD0027F9EE /* Frameworks */,
+				53670BD918F171CD0027F9EE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		53670BD918F171CD0027F9EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				53670BD818F171CD0027F9EE /* bowlingScoreTracker.app */,
+				53670BF918F171CD0027F9EE /* bowlingScoreTrackerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		53670BDA18F171CD0027F9EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53670C3018F17F300027F9EE /* FacebookSDK.framework */,
+				53670C2E18F178170027F9EE /* Twitter.framework */,
+				53670C2C18F178110027F9EE /* Accounts.framework */,
+				53670C1818F1737B0027F9EE /* AudioToolbox.framework */,
+				53670C1918F1737B0027F9EE /* CFNetwork.framework */,
+				53670C1A18F1737B0027F9EE /* CoreLocation.framework */,
+				53670C1B18F1737B0027F9EE /* libz.dylib */,
+				53670C1C18F1737B0027F9EE /* MobileCoreServices.framework */,
+				53670C1D18F1737B0027F9EE /* QuartzCore.framework */,
+				53670C1E18F1737B0027F9EE /* Security.framework */,
+				53670C1F18F1737B0027F9EE /* Social.framework */,
+				53670C2018F1737B0027F9EE /* StoreKit.framework */,
+				53670C2118F1737B0027F9EE /* SystemConfiguration.framework */,
+				53670C1618F1731D0027F9EE /* Parse.framework */,
+				53670BDB18F171CD0027F9EE /* Foundation.framework */,
+				53670BDD18F171CD0027F9EE /* CoreGraphics.framework */,
+				53670BDF18F171CD0027F9EE /* UIKit.framework */,
+				53670BFA18F171CD0027F9EE /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		53670BE118F171CD0027F9EE /* bowlingScoreTracker */ = {
+			isa = PBXGroup;
+			children = (
+				53670BED18F171CD0027F9EE /* Main.storyboard */,
+				53670C1018F171EB0027F9EE /* Classes */,
+				53670C1118F1720F0027F9EE /* Lib */,
+				53670BF318F171CD0027F9EE /* Images.xcassets */,
+				53670BE218F171CD0027F9EE /* Supporting Files */,
+			);
+			path = bowlingScoreTracker;
+			sourceTree = "<group>";
+		};
+		53670BE218F171CD0027F9EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				53670BE318F171CD0027F9EE /* bowlingScoreTracker-Info.plist */,
+				53670BE418F171CD0027F9EE /* InfoPlist.strings */,
+				53670BE718F171CD0027F9EE /* main.m */,
+				53670BE918F171CD0027F9EE /* bowlingScoreTracker-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		53670C0018F171CD0027F9EE /* bowlingScoreTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				53670C0618F171CD0027F9EE /* bowlingScoreTrackerTests.m */,
+				53670C0118F171CD0027F9EE /* Supporting Files */,
+			);
+			path = bowlingScoreTrackerTests;
+			sourceTree = "<group>";
+		};
+		53670C0118F171CD0027F9EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				53670C0218F171CD0027F9EE /* bowlingScoreTrackerTests-Info.plist */,
+				53670C0318F171CD0027F9EE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		53670C1018F171EB0027F9EE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				53670BEA18F171CD0027F9EE /* BST_AppDelegate.h */,
+				53670BEB18F171CD0027F9EE /* BST_AppDelegate.m */,
+				53670C4618F1AED90027F9EE /* LoginViewController */,
+				53670C4B18F1C3D00027F9EE /* LoggedInViewController */,
+				53670C4718F1AEE60027F9EE /* SignUpViewController */,
+				53F5810A18F217370098FE58 /* UserSettingsViewController */,
+				53C3401C18F1F4C900FBBD24 /* MenuTableViewController */,
+				53CEF07418F5F408006B20DC /* SessionsTableViewController */,
+				53CEF07918F631B1006B20DC /* VenueTableViewController */,
+				53CEF07D18F6658C006B20DC /* GameViewController */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		53670C1118F1720F0027F9EE /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				53670C1218F172300027F9EE /* SWRevealViewController */,
+			);
+			name = Lib;
+			sourceTree = "<group>";
+		};
+		53670C1218F172300027F9EE /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53670C1318F172300027F9EE /* SWRevealViewController.h */,
+				53670C1418F172300027F9EE /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		53670C4618F1AED90027F9EE /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53670C4018F1AEC40027F9EE /* BST_LoginViewController.h */,
+				53670C4118F1AEC40027F9EE /* BST_LoginViewController.m */,
+			);
+			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		53670C4718F1AEE60027F9EE /* SignUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53670C4318F1AED40027F9EE /* BST_SignUpViewController.h */,
+				53670C4418F1AED40027F9EE /* BST_SignUpViewController.m */,
+			);
+			name = SignUpViewController;
+			sourceTree = "<group>";
+		};
+		53670C4B18F1C3D00027F9EE /* LoggedInViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53670C4818F1C3CC0027F9EE /* BST_LoggedInViewController.h */,
+				53670C4918F1C3CC0027F9EE /* BST_LoggedInViewController.m */,
+			);
+			name = LoggedInViewController;
+			sourceTree = "<group>";
+		};
+		53C3401C18F1F4C900FBBD24 /* MenuTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53C3401918F1F4C600FBBD24 /* BST_MenuTableViewController.h */,
+				53C3401A18F1F4C600FBBD24 /* BST_MenuTableViewController.m */,
+			);
+			name = MenuTableViewController;
+			sourceTree = "<group>";
+		};
+		53CEF07418F5F408006B20DC /* SessionsTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53CEF07118F5F401006B20DC /* BST_SessionsTableViewController.h */,
+				53CEF07218F5F401006B20DC /* BST_SessionsTableViewController.m */,
+			);
+			name = SessionsTableViewController;
+			sourceTree = "<group>";
+		};
+		53CEF07918F631B1006B20DC /* VenueTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53CEF07618F631AD006B20DC /* BST_VenueTableViewController.h */,
+				53CEF07718F631AD006B20DC /* BST_VenueTableViewController.m */,
+			);
+			name = VenueTableViewController;
+			sourceTree = "<group>";
+		};
+		53CEF07D18F6658C006B20DC /* GameViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53CEF07A18F66587006B20DC /* BST_GameViewController.h */,
+				53CEF07B18F66587006B20DC /* BST_GameViewController.m */,
+			);
+			name = GameViewController;
+			sourceTree = "<group>";
+		};
+		53F5810A18F217370098FE58 /* UserSettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53F5810718F217320098FE58 /* BST_UserSettingsViewController.h */,
+				53F5810818F217320098FE58 /* BST_UserSettingsViewController.m */,
+			);
+			name = UserSettingsViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		53670BD718F171CD0027F9EE /* bowlingScoreTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53670C0A18F171CD0027F9EE /* Build configuration list for PBXNativeTarget "bowlingScoreTracker" */;
+			buildPhases = (
+				53670BD418F171CD0027F9EE /* Sources */,
+				53670BD518F171CD0027F9EE /* Frameworks */,
+				53670BD618F171CD0027F9EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = bowlingScoreTracker;
+			productName = bowlingScoreTracker;
+			productReference = 53670BD818F171CD0027F9EE /* bowlingScoreTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		53670BF818F171CD0027F9EE /* bowlingScoreTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53670C0D18F171CD0027F9EE /* Build configuration list for PBXNativeTarget "bowlingScoreTrackerTests" */;
+			buildPhases = (
+				53670BF518F171CD0027F9EE /* Sources */,
+				53670BF618F171CD0027F9EE /* Frameworks */,
+				53670BF718F171CD0027F9EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				53670BFF18F171CD0027F9EE /* PBXTargetDependency */,
+			);
+			name = bowlingScoreTrackerTests;
+			productName = bowlingScoreTrackerTests;
+			productReference = 53670BF918F171CD0027F9EE /* bowlingScoreTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		53670BD018F171CD0027F9EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BST_;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = medelnant;
+				TargetAttributes = {
+					53670BF818F171CD0027F9EE = {
+						TestTargetID = 53670BD718F171CD0027F9EE;
+					};
+				};
+			};
+			buildConfigurationList = 53670BD318F171CD0027F9EE /* Build configuration list for PBXProject "bowlingScoreTracker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 53670BCF18F171CD0027F9EE;
+			productRefGroup = 53670BD918F171CD0027F9EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				53670BD718F171CD0027F9EE /* bowlingScoreTracker */,
+				53670BF818F171CD0027F9EE /* bowlingScoreTrackerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		53670BD618F171CD0027F9EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53670BF418F171CD0027F9EE /* Images.xcassets in Resources */,
+				53670BE618F171CD0027F9EE /* InfoPlist.strings in Resources */,
+				53670BEF18F171CD0027F9EE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53670BF718F171CD0027F9EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53670C0518F171CD0027F9EE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		53670BD418F171CD0027F9EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53670C4218F1AEC40027F9EE /* BST_LoginViewController.m in Sources */,
+				53CEF07C18F66587006B20DC /* BST_GameViewController.m in Sources */,
+				53CEF07318F5F401006B20DC /* BST_SessionsTableViewController.m in Sources */,
+				53670C4A18F1C3CC0027F9EE /* BST_LoggedInViewController.m in Sources */,
+				53670BEC18F171CD0027F9EE /* BST_AppDelegate.m in Sources */,
+				53C3401B18F1F4C600FBBD24 /* BST_MenuTableViewController.m in Sources */,
+				53F5810918F217320098FE58 /* BST_UserSettingsViewController.m in Sources */,
+				53670BE818F171CD0027F9EE /* main.m in Sources */,
+				53CEF07818F631AD006B20DC /* BST_VenueTableViewController.m in Sources */,
+				53670C1518F172300027F9EE /* SWRevealViewController.m in Sources */,
+				53670C4518F1AED40027F9EE /* BST_SignUpViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53670BF518F171CD0027F9EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53670C0718F171CD0027F9EE /* bowlingScoreTrackerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		53670BFF18F171CD0027F9EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 53670BD718F171CD0027F9EE /* bowlingScoreTracker */;
+			targetProxy = 53670BFE18F171CD0027F9EE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		53670BE418F171CD0027F9EE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53670BE518F171CD0027F9EE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		53670BED18F171CD0027F9EE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53670BEE18F171CD0027F9EE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		53670C0318F171CD0027F9EE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53670C0418F171CD0027F9EE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		53670C0818F171CD0027F9EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		53670C0918F171CD0027F9EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		53670C0B18F171CD0027F9EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bowlingScoreTracker/bowlingScoreTracker-Prefix.pch";
+				INFOPLIST_FILE = "bowlingScoreTracker/bowlingScoreTracker-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		53670C0C18F171CD0027F9EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bowlingScoreTracker/bowlingScoreTracker-Prefix.pch";
+				INFOPLIST_FILE = "bowlingScoreTracker/bowlingScoreTracker-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		53670C0E18F171CD0027F9EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bowlingScoreTracker.app/bowlingScoreTracker";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bowlingScoreTracker/bowlingScoreTracker-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "bowlingScoreTrackerTests/bowlingScoreTrackerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		53670C0F18F171CD0027F9EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/bowlingScoreTracker.app/bowlingScoreTracker";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "bowlingScoreTracker/bowlingScoreTracker-Prefix.pch";
+				INFOPLIST_FILE = "bowlingScoreTrackerTests/bowlingScoreTrackerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		53670BD318F171CD0027F9EE /* Build configuration list for PBXProject "bowlingScoreTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53670C0818F171CD0027F9EE /* Debug */,
+				53670C0918F171CD0027F9EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53670C0A18F171CD0027F9EE /* Build configuration list for PBXNativeTarget "bowlingScoreTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53670C0B18F171CD0027F9EE /* Debug */,
+				53670C0C18F171CD0027F9EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53670C0D18F171CD0027F9EE /* Build configuration list for PBXNativeTarget "bowlingScoreTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53670C0E18F171CD0027F9EE /* Debug */,
+				53670C0F18F171CD0027F9EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 53670BD018F171CD0027F9EE /* Project object */;
+}
