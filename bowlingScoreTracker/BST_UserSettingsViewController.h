@@ -12,7 +12,7 @@
 #import "SWRevealViewController.h"
 #import "BST_MenuTableViewController.h"
 
-@interface BST_UserSettingsViewController : UIViewController
+@interface BST_UserSettingsViewController : UIViewController <UITextFieldDelegate>
 
 // Define UI components
 @property (weak, nonatomic) IBOutlet UITextField *username;
@@ -22,12 +22,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *handedNess;
 
-
 //Define IBActions
 - (IBAction)saveUserChanges:(id)sender;
 - (IBAction)deleteUserAccount:(id)sender;
 
 //Delete account method
 -(void) deleteAcount;
+
+//Resign Keyboard on tap
+- (void)resignOnTap: (id)sender;
 
 @end

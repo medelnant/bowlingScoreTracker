@@ -13,6 +13,21 @@
 @interface BST_GameViewController : UITableViewController {
 
 }
+
+//Store returned data from query within NSMutableArray
+@property NSMutableArray * clientSideGamesArray;
+
+//Define PFObject for receving & passing from/to other view controllers
 @property PFObject * currentSession;
+
+//Define query for fetching games associated with currentSession
+@property PFQuery * currentSessionGameQuery;
+
+//Add Session Method
+- (void)addGame;
+
+- (void)findGamesAssociatedWithSession;
+
+- (void)deleteGame:(NSInteger)gameIndex;
 
 @end

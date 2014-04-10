@@ -32,7 +32,7 @@
     CLLocationManager * deviceLocationManager;
 
 }
-
+//Define PFObject for receving & passing from/to other view controllers
 @property PFObject * currentSession;
 
 @end

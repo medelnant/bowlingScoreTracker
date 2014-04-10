@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D4E5999F-5630-4B08-9425-7B8189B161CB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>bowlingScoreTracker</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>941C4625-FF4D-4804-A4D4-CDC5CB204616</key>
+		<string>https://github.com/medelnant/bowlingScoreTracker.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>bowlingScoreTracker.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>941C4625-FF4D-4804-A4D4-CDC5CB204616</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/medelnant/bowlingScoreTracker.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>941C4625-FF4D-4804-A4D4-CDC5CB204616</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>941C4625-FF4D-4804-A4D4-CDC5CB204616</string>
+			<key>IDESourceControlWCCName</key>
+			<string>bowlingScoreTracker</string>
+		</dict>
+	</array>
+</dict>
+</plist>

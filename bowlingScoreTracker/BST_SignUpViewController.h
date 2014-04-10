@@ -11,7 +11,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "BST_LoggedInViewController.h"
 
-@interface BST_SignUpViewController : UIViewController
+@interface BST_SignUpViewController : UIViewController <UITextFieldDelegate>
 
 // Define UI Properties
 @property (weak, nonatomic) IBOutlet UITextField *username;

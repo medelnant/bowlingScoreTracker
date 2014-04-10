@@ -15,26 +15,7 @@
 
 @implementation BST_VenueTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    //Set View Title
-    self.navigationItem.title = @"Bowling Centers";
-    
-    //Add barButton left to trigger drawer slide open/close
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self.revealViewController action:@selector( revealToggle: )];
-    
-
+- (void)viewWillAppear:(BOOL)animated {
     
     //CLLocation Manager instance
     deviceLocationManager = [[CLLocationManager alloc] init];
@@ -44,8 +25,18 @@
     deviceLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     [deviceLocationManager startUpdatingLocation];
-    
 
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    //Set View Title
+    self.navigationItem.title = @"Choose Bowling Center";
+    
+    //Add barButton left to trigger drawer slide open/close
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self.revealViewController action:@selector( revealToggle: )];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -60,7 +51,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - CLLocationManagerDelegate
+#pragma mark - CLLocationManager Delegate Methods
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
@@ -99,7 +90,7 @@
     }
 }
 
-#pragma mark - Connection Methods
+#pragma mark - Connection Delegate Methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSLog(@" ");
@@ -209,6 +200,26 @@
 
 }
 
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"gameScoring"]) {
+        
+        BST_GameViewController *destinationViewController = segue.destinationViewController;
+        
+        if(destinationViewController != nil) {
+            
+            //Pass Object to step 2: select bowling center
+            destinationViewController.currentSession = _currentSession;
+            
+        }
+        
+    }
+    
+}
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -247,26 +258,5 @@
     return YES;
 }
 */
-
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if([segue.identifier isEqualToString:@"gameScoring"]) {
-        
-        BST_GameViewController *destinationViewController = segue.destinationViewController;
-        
-        if(destinationViewController != nil) {
-            
-            //Pass Object to step 2: select bowling center
-            destinationViewController.currentSession = _currentSession;
-            
-        }
-        
-    }
-
-}
 
 @end

@@ -13,12 +13,17 @@
 
 @interface BST_SessionsTableViewController : UITableViewController
 
-@property NSMutableArray * clientSessionArray;
+//Store returned data from query within NSMutableArray
+@property NSMutableArray * clientSideSessionArray;
+
+//Define query and object for passing to other view controllers
 @property PFObject * createdSession;
 @property PFQuery *sessionQuery;
 
-
 //Add Session Method
 - (void)addSession;
+
+//Add Session Method
+- (void)deleteSession:(NSInteger)sessionIndex;
 @end
 
