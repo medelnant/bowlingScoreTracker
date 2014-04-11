@@ -2,6 +2,10 @@
 //  BST_GameViewController.m
 //  bowlingScoreTracker
 //
+//  ADP 1 | Week 2 | Term 1404
+//  Michael Edelnant
+//  Instructor: Lyndon Modomo
+//
 //  Created by vAesthetic on 4/10/14.
 //  Copyright (c) 2014 medelnant. All rights reserved.
 //
@@ -28,7 +32,7 @@
     [super viewDidLoad];
     
     //Set View Title
-    self.navigationItem.title = @"Game Scoring";
+    self.navigationItem.title = [NSString stringWithFormat:@"%@", [_currentSession valueForKey:@"title"]];
     
     //Add barButton left to trigger drawer slide open/close
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self.revealViewController action:@selector( revealToggle: )];

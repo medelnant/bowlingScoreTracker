@@ -2,6 +2,10 @@
 //  BST_AppDelegate.m
 //  bowlingScoreTracker
 //
+//  ADP 1 | Week 2 | Term 1404
+//  Michael Edelnant
+//  Instructor: Lyndon Modomo
+//
 //  Created by vAesthetic on 4/6/14.
 //  Copyright (c) 2014 medelnant. All rights reserved.
 //

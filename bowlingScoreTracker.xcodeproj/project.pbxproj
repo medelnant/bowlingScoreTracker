@@ -38,6 +38,8 @@
 		53670C4218F1AEC40027F9EE /* BST_LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53670C4118F1AEC40027F9EE /* BST_LoginViewController.m */; };
 		53670C4518F1AED40027F9EE /* BST_SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53670C4418F1AED40027F9EE /* BST_SignUpViewController.m */; };
 		53670C4A18F1C3CC0027F9EE /* BST_LoggedInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53670C4918F1C3CC0027F9EE /* BST_LoggedInViewController.m */; };
+		53A0D30B18F7781700E34117 /* launchPage.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A0D30918F7781700E34117 /* launchPage.png */; };
+		53A0D30C18F7781700E34117 /* launchPage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A0D30A18F7781700E34117 /* launchPage2.png */; };
 		53C3401B18F1F4C600FBBD24 /* BST_MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C3401A18F1F4C600FBBD24 /* BST_MenuTableViewController.m */; };
 		53CEF07318F5F401006B20DC /* BST_SessionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CEF07218F5F401006B20DC /* BST_SessionsTableViewController.m */; };
 		53CEF07818F631AD006B20DC /* BST_VenueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CEF07718F631AD006B20DC /* BST_VenueTableViewController.m */; };
@@ -95,6 +97,8 @@
 		53670C4418F1AED40027F9EE /* BST_SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_SignUpViewController.m; sourceTree = "<group>"; };
 		53670C4818F1C3CC0027F9EE /* BST_LoggedInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_LoggedInViewController.h; sourceTree = "<group>"; };
 		53670C4918F1C3CC0027F9EE /* BST_LoggedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_LoggedInViewController.m; sourceTree = "<group>"; };
+		53A0D30918F7781700E34117 /* launchPage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchPage.png; sourceTree = "<group>"; };
+		53A0D30A18F7781700E34117 /* launchPage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchPage2.png; sourceTree = "<group>"; };
 		53C3401918F1F4C600FBBD24 /* BST_MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_MenuTableViewController.h; sourceTree = "<group>"; };
 		53C3401A18F1F4C600FBBD24 /* BST_MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_MenuTableViewController.m; sourceTree = "<group>"; };
 		53CEF07118F5F401006B20DC /* BST_SessionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_SessionsTableViewController.h; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 			children = (
 				53670BED18F171CD0027F9EE /* Main.storyboard */,
 				53670C1018F171EB0027F9EE /* Classes */,
+				53A0D30D18F7781D00E34117 /* Images */,
 				53670C1118F1720F0027F9EE /* Lib */,
 				53670BF318F171CD0027F9EE /* Images.xcassets */,
 				53670BE218F171CD0027F9EE /* Supporting Files */,
@@ -289,6 +294,15 @@
 				53670C4918F1C3CC0027F9EE /* BST_LoggedInViewController.m */,
 			);
 			name = LoggedInViewController;
+			sourceTree = "<group>";
+		};
+		53A0D30D18F7781D00E34117 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				53A0D30918F7781700E34117 /* launchPage.png */,
+				53A0D30A18F7781700E34117 /* launchPage2.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		53C3401C18F1F4C900FBBD24 /* MenuTableViewController */ = {
@@ -413,7 +427,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53A0D30C18F7781700E34117 /* launchPage2.png in Resources */,
 				53670BF418F171CD0027F9EE /* Images.xcassets in Resources */,
+				53A0D30B18F7781700E34117 /* launchPage.png in Resources */,
 				53670BE618F171CD0027F9EE /* InfoPlist.strings in Resources */,
 				53670BEF18F171CD0027F9EE /* Main.storyboard in Resources */,
 			);

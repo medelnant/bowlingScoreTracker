@@ -2,6 +2,10 @@
 //  BST_SessionsTableViewController.m
 //  bowlingScoreTracker
 //
+//  ADP 1 | Week 2 | Term 1404
+//  Michael Edelnant
+//  Instructor: Lyndon Modomo
+//
 //  Created by vAesthetic on 4/9/14.
 //  Copyright (c) 2014 medelnant. All rights reserved.
 //
@@ -10,6 +14,9 @@
 #import "BST_VenueTableViewController.h"
 
 @interface BST_SessionsTableViewController ()
+
+#define TAG_EMPTYLIST 1
+#define TAG_CREATESESSION 2
 
 @end
 
@@ -63,6 +70,9 @@
             
             //Reload tableView after query object is returned
             [[self tableView] reloadData];
+            
+            //Check session count to alert user with frienly uiAlertView to create session
+            [self checkSessionCount];
         } else {
             NSLog(@"Query error. Not good!");
         }
@@ -177,6 +187,7 @@
                                                         message:nil
                                                        delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Next", nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alertView.tag = TAG_CREATESESSION;
     [alertView show];
 
 }
@@ -222,33 +233,54 @@
     }];
 }
 
+- (void)checkSessionCount {
+    if(_clientSideSessionArray.count == 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Create Session"
+                                                            message:@"Looks like you have no sessions created. Would you like to create one now?"
+                                                           delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        alertView.tag = TAG_EMPTYLIST;
+        [alertView show];
+    }
+}
+
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
     //NSLog(@"Callback Will!");
     
     NSLog(@"%@", [NSString stringWithFormat:@"Alert Button Index: %ld", (long)buttonIndex]);
     
     if(buttonIndex != 0) {
+        if (alertView.tag == TAG_CREATESESSION) {
         
-        //Retrive text from textfield and assign to pointer
-        NSString * sessionTitle = [[alertView textFieldAtIndex: 0] text];
-        
-        //Create new PFObject
-        _createdSession = [PFObject objectWithClassName:@"Session"];
-        
-        //Set title attribute for object
-        [_createdSession setObject:sessionTitle forKey:@"title"];
-        
-        // Create relationship
-        [_createdSession setObject:[PFUser currentUser] forKey:@"bowler"];
+            //Retrive text from textfield and assign to pointer
+            NSString * sessionTitle = [[alertView textFieldAtIndex: 0] text];
+            
+            //Create new PFObject
+            _createdSession = [PFObject objectWithClassName:@"Session"];
+            
+            //Set title attribute for object
+            [_createdSession setObject:sessionTitle forKey:@"title"];
+            
+            // Create relationship
+            [_createdSession setObject:[PFUser currentUser] forKey:@"bowler"];
+            
+        }
     }
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     //NSLog(@"Callback Did!");
     
-    if(buttonIndex != 0) {
-        [self performSegueWithIdentifier:@"venues" sender:nil];
+    if (alertView.tag == TAG_CREATESESSION) {
+        if(buttonIndex != 0) {
+            [self performSegueWithIdentifier:@"venues" sender:nil];
+        }
+    } else if(alertView.tag == TAG_EMPTYLIST) {
+        if(buttonIndex != 0) {
+            [self addSession];
+        }
+
     }
+
 }
 
 /*
