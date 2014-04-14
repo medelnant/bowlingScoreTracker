@@ -39,6 +39,7 @@
     
     
     PFUser * fbBowler = [PFUser currentUser];
+    
     if (fbBowler != nil) {
         
         //Hide navigation bar back button
@@ -64,6 +65,7 @@
                 self.password.enabled = NO;
                 self.password.text = @"null";
                 self.password.textColor = [UIColor grayColor];
+                
             }
         }];
     }
@@ -103,11 +105,14 @@
     
     //Test if fields are left empty
     if([userNameText length] == 0 || [passwordText length] == 0 || [firstNameText length] == 0 || [lastNameText length] == 0 || [emailText length] == 0) {
+        
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops!"
                                                             message:@"Make sure you enter a username, email address, first name, last name and password!"
                                                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
+        
     } else /*Do action*/ {
+        
         NSLog(@"Send data to parse");
         
         //Check against existing user through FB Sign up
@@ -122,12 +127,16 @@
             fbBowler[@"lastname"]      = lastNameText;
             fbBowler[@"handedNess"]    = handedNessValueString;
             
+            //Save bowler/user
             [fbBowler saveEventually:^(BOOL succeeded, NSError *error) {
+                
                 if (error) {
+                    
                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry!"
                                                                         message:[error.userInfo objectForKey:@"error"]
                                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [alertView show];
+                    
                 }
                 else {
                     
@@ -142,6 +151,7 @@
                     // Send to loggedInView
                     [self performSegueWithIdentifier:@"loggedIn" sender:nil];
                 }
+                
             }];
 
         } else {
@@ -153,7 +163,7 @@
             saveBowler.email            = emailText;
             saveBowler[@"firstname"]    = firstNameText;
             saveBowler[@"lastname"]     = lastNameText;
-            saveBowler[@"handedNess"]    = handedNessValueString;
+            saveBowler[@"handedNess"]   = handedNessValueString;
             
             // Save Bowler to parse
             [saveBowler signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -175,6 +185,7 @@
                     
                     // Send to loggedInView
                     [self performSegueWithIdentifier:@"loggedIn" sender:nil];
+                    
                 }
             }];
         }

@@ -137,10 +137,17 @@
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         
         if (!error) {
+            
+            //Set current session/created session to result from query
             _createdSession = object;
+            
+            //Proceeed to game scoring view
             [self performSegueWithIdentifier:@"gameScoring" sender:nil];
+            
         } else {
+            
             NSLog(@"Query Error for existing session in tableViewList");
+            
         }
         
     }];
@@ -150,10 +157,16 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
         // Delete the row from the data source
         NSInteger sessionIndex = indexPath.row;
+        
+        //Call to deleteSession method
         [self deleteSession:sessionIndex];
+        
+        //Remove row from tableview
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }
@@ -268,19 +281,20 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    //NSLog(@"Callback Did!");
     
     if (alertView.tag == TAG_CREATESESSION) {
         if(buttonIndex != 0) {
+            
             [self performSegueWithIdentifier:@"venues" sender:nil];
+            
         }
     } else if(alertView.tag == TAG_EMPTYLIST) {
         if(buttonIndex != 0) {
+            
             [self addSession];
+            
         }
-
     }
-
 }
 
 /*

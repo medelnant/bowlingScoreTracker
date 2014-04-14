@@ -21,6 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     
     //Add gesture for swiping within navBar to trigger drawer slide open/close
@@ -63,6 +64,7 @@
         self.password.enabled = NO;
         self.password.text = @"null";
         self.password.textColor = [UIColor grayColor];
+        
     }
 }
 
@@ -102,10 +104,12 @@
     
     //Test if fields are left empty
     if([userNameText length] == 0 || [passwordText length] == 0 || [firstNameText length] == 0 || [lastNameText length] == 0 || [emailText length] == 0) {
+        
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops"
                                                             message:@"Make sure you enter a username, email address, first name, last name and password."
                                                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
+        
     } else /*Do action*/ {
         NSLog(@"Send data to parse");
         
@@ -123,16 +127,20 @@
             
             [currentBowler saveEventually:^(BOOL succeeded, NSError *error) {
                 if (error) {
+                    
                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
                                                                         message:[error.userInfo objectForKey:@"error"]
                                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [alertView show];
+                    
                 }
                 else {
+                    
                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Settings Saved"
                                                                         message:@"Your user settings have been saved."
                                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [alertView show];
+                    
                 }
             }];
             
@@ -143,19 +151,19 @@
 
 // Action for triggering confirm for deleteAccount
 - (IBAction)deleteUserAccount:(id)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] init];
-    [alertView setTitle:@"Delete Account"];
-    [alertView setMessage:@"We're sorry to see you go. Are you sure you want to delete your account?"];
-    [alertView setDelegate:self];
-    [alertView addButtonWithTitle:@"Yes"];
-    [alertView addButtonWithTitle:@"No"];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Delete Account"
+                                                        message:@"We're sorry to see you go. Are you sure you want to delete your account?"
+                                                       delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
     [alertView show];
+    
 }
 
 
 // Delete Account Method targeted from uiAlertView
 -(void) deleteAcount {
-    //NSLog(@"Delete Account hit");
+    
+    //Perform delete method
     [[PFUser currentUser] deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if(error) {
             NSLog(@"Delete Account error'd");
@@ -163,6 +171,7 @@
             [self performSegueWithIdentifier:@"deleteUserAccount" sender:nil];
         }
     }];
+    
 }
 
 #pragma mark - UIAlertView Delegate Methods
@@ -178,6 +187,7 @@
     } else if (buttonIndex == 1) {
         
     }
+    
 }
 
 #pragma mark - Navigation
@@ -195,6 +205,7 @@
         };
         
     }
+    
 }
 
 

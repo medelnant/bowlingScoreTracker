@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5345DBEF18F9A3CA00DD9D45 /* bst_gameScoreCardLines@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5345DBED18F9A3CA00DD9D45 /* bst_gameScoreCardLines@2x.png */; };
+		5345DBF018F9A3CA00DD9D45 /* bst_gameScoreCardLines.png in Resources */ = {isa = PBXBuildFile; fileRef = 5345DBEE18F9A3CA00DD9D45 /* bst_gameScoreCardLines.png */; };
+		5345DBF218F9DA5A00DD9D45 /* GameScoreCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5345DBF118F9DA5A00DD9D45 /* GameScoreCard.xib */; };
+		5345DBF918F9E0D300DD9D45 /* BST_GameScoringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5345DBF818F9E0D300DD9D45 /* BST_GameScoringViewController.m */; };
+		5345DBFE18F9EAC000DD9D45 /* BST_GameScoreCardNib.m in Sources */ = {isa = PBXBuildFile; fileRef = 5345DBFD18F9EAC000DD9D45 /* BST_GameScoreCardNib.m */; };
+		5345DC0318FA0C4800DD9D45 /* KeyPadEntry.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5345DC0218FA0C4800DD9D45 /* KeyPadEntry.xib */; };
+		5345DC0A18FA139500DD9D45 /* BST_KeyPadEntryNib.m in Sources */ = {isa = PBXBuildFile; fileRef = 5345DC0918FA139500DD9D45 /* BST_KeyPadEntryNib.m */; };
+		5345DC0D18FA1BC200DD9D45 /* PinPadEntry.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5345DC0C18FA1BC200DD9D45 /* PinPadEntry.xib */; };
+		5345DC1018FA1E3400DD9D45 /* BST_PinPadEntryNib.m in Sources */ = {isa = PBXBuildFile; fileRef = 5345DC0F18FA1E3400DD9D45 /* BST_PinPadEntryNib.m */; };
 		53670BDC18F171CD0027F9EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670BDB18F171CD0027F9EE /* Foundation.framework */; };
 		53670BDE18F171CD0027F9EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670BDD18F171CD0027F9EE /* CoreGraphics.framework */; };
 		53670BE018F171CD0027F9EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53670BDF18F171CD0027F9EE /* UIKit.framework */; };
@@ -58,6 +67,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5345DBED18F9A3CA00DD9D45 /* bst_gameScoreCardLines@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bst_gameScoreCardLines@2x.png"; sourceTree = "<group>"; };
+		5345DBEE18F9A3CA00DD9D45 /* bst_gameScoreCardLines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bst_gameScoreCardLines.png; sourceTree = "<group>"; };
+		5345DBF118F9DA5A00DD9D45 /* GameScoreCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameScoreCard.xib; sourceTree = "<group>"; };
+		5345DBF718F9E0D300DD9D45 /* BST_GameScoringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_GameScoringViewController.h; sourceTree = "<group>"; };
+		5345DBF818F9E0D300DD9D45 /* BST_GameScoringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_GameScoringViewController.m; sourceTree = "<group>"; };
+		5345DBFC18F9EAC000DD9D45 /* BST_GameScoreCardNib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_GameScoreCardNib.h; sourceTree = "<group>"; };
+		5345DBFD18F9EAC000DD9D45 /* BST_GameScoreCardNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_GameScoreCardNib.m; sourceTree = "<group>"; };
+		5345DC0218FA0C4800DD9D45 /* KeyPadEntry.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyPadEntry.xib; sourceTree = "<group>"; };
+		5345DC0818FA139500DD9D45 /* BST_KeyPadEntryNib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_KeyPadEntryNib.h; sourceTree = "<group>"; };
+		5345DC0918FA139500DD9D45 /* BST_KeyPadEntryNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_KeyPadEntryNib.m; sourceTree = "<group>"; };
+		5345DC0C18FA1BC200DD9D45 /* PinPadEntry.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PinPadEntry.xib; sourceTree = "<group>"; };
+		5345DC0E18FA1E3400DD9D45 /* BST_PinPadEntryNib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_PinPadEntryNib.h; sourceTree = "<group>"; };
+		5345DC0F18FA1E3400DD9D45 /* BST_PinPadEntryNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_PinPadEntryNib.m; sourceTree = "<group>"; };
 		53670BD818F171CD0027F9EE /* bowlingScoreTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bowlingScoreTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53670BDB18F171CD0027F9EE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		53670BDD18F171CD0027F9EE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -149,6 +171,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5345DBFA18F9E0D700DD9D45 /* GameScoringViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5345DBF718F9E0D300DD9D45 /* BST_GameScoringViewController.h */,
+				5345DBF818F9E0D300DD9D45 /* BST_GameScoringViewController.m */,
+			);
+			name = GameScoringViewController;
+			sourceTree = "<group>";
+		};
+		5345DBFB18F9E0EE00DD9D45 /* NIB FIles */ = {
+			isa = PBXGroup;
+			children = (
+				5345DBF118F9DA5A00DD9D45 /* GameScoreCard.xib */,
+				5345DC0218FA0C4800DD9D45 /* KeyPadEntry.xib */,
+				5345DC0C18FA1BC200DD9D45 /* PinPadEntry.xib */,
+			);
+			name = "NIB FIles";
+			sourceTree = "<group>";
+		};
+		5345DBFF18F9FEC700DD9D45 /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				5345DC0118F9FF1D00DD9D45 /* GameScoreCardNIB */,
+				5345DC0B18FA139900DD9D45 /* KeyPadEntryNIB */,
+				5345DC1118FA1E3900DD9D45 /* PinPadEntryNIB */,
+			);
+			name = Nibs;
+			sourceTree = "<group>";
+		};
+		5345DC0018F9FEF000DD9D45 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				53670C4618F1AED90027F9EE /* LoginViewController */,
+				53670C4B18F1C3D00027F9EE /* LoggedInViewController */,
+				53670C4718F1AEE60027F9EE /* SignUpViewController */,
+				53F5810A18F217370098FE58 /* UserSettingsViewController */,
+				53C3401C18F1F4C900FBBD24 /* MenuTableViewController */,
+				53CEF07418F5F408006B20DC /* SessionsTableViewController */,
+				53CEF07918F631B1006B20DC /* VenueTableViewController */,
+				53CEF07D18F6658C006B20DC /* temp_GameViewController */,
+				5345DBFA18F9E0D700DD9D45 /* GameScoringViewController */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		5345DC0118F9FF1D00DD9D45 /* GameScoreCardNIB */ = {
+			isa = PBXGroup;
+			children = (
+				5345DBFC18F9EAC000DD9D45 /* BST_GameScoreCardNib.h */,
+				5345DBFD18F9EAC000DD9D45 /* BST_GameScoreCardNib.m */,
+			);
+			name = GameScoreCardNIB;
+			sourceTree = "<group>";
+		};
+		5345DC0B18FA139900DD9D45 /* KeyPadEntryNIB */ = {
+			isa = PBXGroup;
+			children = (
+				5345DC0818FA139500DD9D45 /* BST_KeyPadEntryNib.h */,
+				5345DC0918FA139500DD9D45 /* BST_KeyPadEntryNib.m */,
+			);
+			name = KeyPadEntryNIB;
+			sourceTree = "<group>";
+		};
+		5345DC1118FA1E3900DD9D45 /* PinPadEntryNIB */ = {
+			isa = PBXGroup;
+			children = (
+				5345DC0E18FA1E3400DD9D45 /* BST_PinPadEntryNib.h */,
+				5345DC0F18FA1E3400DD9D45 /* BST_PinPadEntryNib.m */,
+			);
+			name = PinPadEntryNIB;
+			sourceTree = "<group>";
+		};
 		53670BCF18F171CD0027F9EE = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				53670BED18F171CD0027F9EE /* Main.storyboard */,
+				5345DBFB18F9E0EE00DD9D45 /* NIB FIles */,
 				53670C1018F171EB0027F9EE /* Classes */,
 				53A0D30D18F7781D00E34117 /* Images */,
 				53670C1118F1720F0027F9EE /* Lib */,
@@ -240,14 +335,8 @@
 			children = (
 				53670BEA18F171CD0027F9EE /* BST_AppDelegate.h */,
 				53670BEB18F171CD0027F9EE /* BST_AppDelegate.m */,
-				53670C4618F1AED90027F9EE /* LoginViewController */,
-				53670C4B18F1C3D00027F9EE /* LoggedInViewController */,
-				53670C4718F1AEE60027F9EE /* SignUpViewController */,
-				53F5810A18F217370098FE58 /* UserSettingsViewController */,
-				53C3401C18F1F4C900FBBD24 /* MenuTableViewController */,
-				53CEF07418F5F408006B20DC /* SessionsTableViewController */,
-				53CEF07918F631B1006B20DC /* VenueTableViewController */,
-				53CEF07D18F6658C006B20DC /* GameViewController */,
+				5345DBFF18F9FEC700DD9D45 /* Nibs */,
+				5345DC0018F9FEF000DD9D45 /* Views */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -299,6 +388,8 @@
 		53A0D30D18F7781D00E34117 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5345DBED18F9A3CA00DD9D45 /* bst_gameScoreCardLines@2x.png */,
+				5345DBEE18F9A3CA00DD9D45 /* bst_gameScoreCardLines.png */,
 				53A0D30918F7781700E34117 /* launchPage.png */,
 				53A0D30A18F7781700E34117 /* launchPage2.png */,
 			);
@@ -332,13 +423,13 @@
 			name = VenueTableViewController;
 			sourceTree = "<group>";
 		};
-		53CEF07D18F6658C006B20DC /* GameViewController */ = {
+		53CEF07D18F6658C006B20DC /* temp_GameViewController */ = {
 			isa = PBXGroup;
 			children = (
 				53CEF07A18F66587006B20DC /* BST_GameViewController.h */,
 				53CEF07B18F66587006B20DC /* BST_GameViewController.m */,
 			);
-			name = GameViewController;
+			name = temp_GameViewController;
 			sourceTree = "<group>";
 		};
 		53F5810A18F217370098FE58 /* UserSettingsViewController */ = {
@@ -427,10 +518,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5345DBF018F9A3CA00DD9D45 /* bst_gameScoreCardLines.png in Resources */,
 				53A0D30C18F7781700E34117 /* launchPage2.png in Resources */,
+				5345DBF218F9DA5A00DD9D45 /* GameScoreCard.xib in Resources */,
 				53670BF418F171CD0027F9EE /* Images.xcassets in Resources */,
 				53A0D30B18F7781700E34117 /* launchPage.png in Resources */,
 				53670BE618F171CD0027F9EE /* InfoPlist.strings in Resources */,
+				5345DC0D18FA1BC200DD9D45 /* PinPadEntry.xib in Resources */,
+				5345DBEF18F9A3CA00DD9D45 /* bst_gameScoreCardLines@2x.png in Resources */,
+				5345DC0318FA0C4800DD9D45 /* KeyPadEntry.xib in Resources */,
 				53670BEF18F171CD0027F9EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,7 +546,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5345DC0A18FA139500DD9D45 /* BST_KeyPadEntryNib.m in Sources */,
 				53670C4218F1AEC40027F9EE /* BST_LoginViewController.m in Sources */,
+				5345DBFE18F9EAC000DD9D45 /* BST_GameScoreCardNib.m in Sources */,
 				53CEF07C18F66587006B20DC /* BST_GameViewController.m in Sources */,
 				53CEF07318F5F401006B20DC /* BST_SessionsTableViewController.m in Sources */,
 				53670C4A18F1C3CC0027F9EE /* BST_LoggedInViewController.m in Sources */,
@@ -459,6 +557,8 @@
 				53F5810918F217320098FE58 /* BST_UserSettingsViewController.m in Sources */,
 				53670BE818F171CD0027F9EE /* main.m in Sources */,
 				53CEF07818F631AD006B20DC /* BST_VenueTableViewController.m in Sources */,
+				5345DC1018FA1E3400DD9D45 /* BST_PinPadEntryNib.m in Sources */,
+				5345DBF918F9E0D300DD9D45 /* BST_GameScoringViewController.m in Sources */,
 				53670C1518F172300027F9EE /* SWRevealViewController.m in Sources */,
 				53670C4518F1AED40027F9EE /* BST_SignUpViewController.m in Sources */,
 			);

@@ -75,6 +75,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CellIdentifier forIndexPath: indexPath];
     
     return cell;
+    
 }
 
 #pragma mark - Navigation
@@ -91,16 +92,20 @@
         SWRevealViewController* sideDrawer = self.revealViewController;
         
         //Push to destination view
-        sideDrawerSegue.performBlock = ^(SWRevealViewControllerSegue * rvc_segue, UIViewController* svc, UIViewController* dvc)
-        {
+        sideDrawerSegue.performBlock = ^(SWRevealViewControllerSegue * rvc_segue, UIViewController* svc, UIViewController* dvc) {
+            
             UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:dvc];
             [sideDrawer pushFrontViewController:nc animated:YES];
+            
         };
+        
     }
     
     // Logout based on segue identifier
     if([[segue identifier] isEqualToString:@"logOut"]) {
+        
         [PFUser logOut];
+        
     }
 
 }

@@ -68,6 +68,7 @@
     } else /*Do Action*/{
         NSLog(@"Send data to parse");
         
+        //Perform logggin method for user
         [PFUser logInWithUsernameInBackground:userNameText password:passwordText block:^(PFUser *user, NSError *error) {
             if (error) {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry!"
@@ -92,6 +93,7 @@
 - (IBAction)faceBookRegisterUser:(id)sender {
     NSLog(@"Facebook Clicked!");
     
+    //Perform loggin method for user via facebook
     [PFFacebookUtils logInWithPermissions:nil block:^(PFUser *user, NSError *error) {
         if (!user) {
             NSLog(@"Uh oh. The user cancelled the Facebook login.");
