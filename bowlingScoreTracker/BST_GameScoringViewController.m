@@ -331,18 +331,14 @@
     
     //Calculate score and updateScoreCard
     if([[_activeGameScoreArray[overallFrameCounter] valueForKey:@"isStrike"] isEqualToString:@"true"] || frameThrowCount == 2) {
-        
-        int frameIndex = overallFrameCounter;
-        [self calculateFrameScore:frameIndex];
+
+        [self calculateFrameScore:overallFrameCounter];
         
     } else {
         
         [self updateScoreCard];
    
     }
-    
-    
-
 }
 
 - (NSMutableArray*)createEmptyGameArray {
@@ -370,12 +366,17 @@
         //Add NSMutableDictionary to NSMutableArray
         [gameArray addObject:frame];
     }
+    
+    //Ship it!
     return gameArray;
 }
 
 - (void)nextThrow {
     
+    //If throwCountLabel is not empty
     if (![_throwCountLabel.text  isEqual: @""]) {
+        
+        //If throw is second or third throw
         if(frameThrowCount == maxFrameThrowCount) {
             
             // If second throw causes frame total to exceed 10
@@ -384,7 +385,9 @@
                                                                     message:@"You cannot enter a pin value that will cause frame total to exceed 10"
                                                                    delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alertView show];
+                
             } else {
+                
                 //Send user throw count to addThrowCountToGameObject
                 [self addThrowCountToGameObject:_throwCountLabel.text];
                 
@@ -397,10 +400,9 @@
                 //Reset appropriate frame label to light gray color
                 [_scoreCardView.frameLabels[overallFrameCounter] setBackgroundColor:[UIColor lightGrayColor]];
                 
-                
-                
                 //If tenth frame
                 if(overallFrameCounter == (_activeGameScoreArray.count-1)) {
+                    
                     //NSLog(@"Test Advance Click Next: %d out of %lu", overallFrameCounter, (_activeGameScoreArray.count -1));
                     maxFrameThrowCount = 3;
                     NSLog(@"Entering tenth frame!");
@@ -409,6 +411,7 @@
                     [_scoreCardView.frameLabels[overallFrameCounter] setBackgroundColor:[UIColor darkGrayColor]];
                     
                 } else {
+                    
                     //Advance to next frame
                     overallFrameCounter++;
                     
@@ -423,10 +426,9 @@
                 //Change frameStatusLabel to appropriate frame
                 _frameStatusLabel.text = [NSString stringWithFormat:@"Frame %d", (overallFrameCounter+1)];
                 
-
-                
             }
-            
+        
+        //If throw is first throw only
         } else {
             
             //Set Frame firstThrowPinCount
@@ -441,23 +443,31 @@
                 
                 firstFramePinCount = 10;
                 
-                //If 10th frame lets not advance frames anymore
+                //If 10th frame lets not advance frames anymore (or else will crash due to index)
                 if(overallFrameCounter == (_activeGameScoreArray.count-1)) {
-                    //NSLog(@"Test Advance Click Next: %d out of %lu", overallFrameCounter, (_activeGameScoreArray.count -1));
+                    
+                    //Reset max throw count to 3
                     maxFrameThrowCount = 3;
+                    
+                    //Increment frameThrowCount
                     frameThrowCount++;
-                    NSLog(@"Entering tenth frame!");
+                    
+                    //Set bool for tenth frame to true
                     tenthFrame = true;
+                    
+                    NSLog(@"Entering tenth frame!");
                 } else {
+                    
                     //Advance to next frame
                     overallFrameCounter++;
+                    
+                    //Reset throwCount to first throw
                     frameThrowCount = 1;
                 }
                 
                 //Change frameStatusLabel to appropriate frame
                 _frameStatusLabel.text = [NSString stringWithFormat:@"Frame %d", (overallFrameCounter+1)];
 
-                
                 //Reset appropriate frame label to light gray color
                 [_scoreCardView.frameLabels[overallFrameCounter-1] setBackgroundColor:[UIColor lightGrayColor]];
                 
@@ -465,17 +475,20 @@
                 [_scoreCardView.frameLabels[overallFrameCounter] setBackgroundColor:[UIColor darkGrayColor]];
                 
             } else {
+                
+                //Advance to next throw
                 frameThrowCount++;
+                
             }
             
             //Clear throw count label
             _throwCountLabel.text = @"";
             
-            
         }
         
     }
     
+    //Advance scrollView for score card to second half of the card if in frame 5 or greater
     if(overallFrameCounter >= 5) {
         [_scoreCardScrollView setContentOffset:CGPointMake(320, 0) animated:YES];
     }
@@ -484,10 +497,15 @@
 
 - (void) previousThrow {
     
+    //If in any frame other than first frame
     if(overallFrameCounter > 0) {
+        
+        //Decrement frameCounter
         overallFrameCounter--;
+        
     }
     
+    //Scrollback for score card to first half of the card if in frame 5 or less
     if(overallFrameCounter <= 5) {
         [_scoreCardScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     }
