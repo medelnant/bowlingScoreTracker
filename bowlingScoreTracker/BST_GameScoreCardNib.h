@@ -13,6 +13,21 @@
 
 @property (strong, nonatomic) NSArray * frames;
 @property (strong, nonatomic) NSArray * frameTotals;
+@property (strong, nonatomic) NSArray * frameLabels;
+
+//Frame Labels
+@property (weak, nonatomic) IBOutlet UILabel *frameLabel_1;
+@property (weak, nonatomic) IBOutlet UILabel *frameLabel_2;
+@property (weak, nonatomic) IBOutlet UILabel *frameLabel_3;
+@property (weak, nonatomic) IBOutlet UILabel *frameLabel_4;
+@property (weak, nonatomic) IBOutlet UILabel *frameLabel_5;
+@property (weak, nonatomic) IBOutlet UILabel *frameLabel_6;
+@property (weak, nonatomic) IBOutlet UILabel *frameLabel_7;
+@property (weak, nonatomic) IBOutlet UILabel *frameLabel_8;
+@property (weak, nonatomic) IBOutlet UILabel *frameLabel_9;
+@property (weak, nonatomic) IBOutlet UILabel *frameLabel_10;
+
+
 
 //Throws
 @property (weak, nonatomic) IBOutlet UILabel *throw_1;

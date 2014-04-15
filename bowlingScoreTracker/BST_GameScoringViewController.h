@@ -15,11 +15,7 @@
 
 @interface BST_GameScoringViewController : UIViewController <KeyPadEntryViewDelegate, PinPadEntryViewDelegate>
 {
-    //Define throw Counter
-    int overallFrameCounter;
-    int frameThrowCount;
-    int maxFrameThrowCount;
-    int firstFramePinCount;
+
 }
 
 //Store returned data from query within NSMutableArray
@@ -50,13 +46,19 @@
 - (IBAction)gameFrameNavigation:(UIButton *)sender;
 
 //Define Custom Methods
+
+//Setup new game methods
+- (void)createNewGame;
 - (NSMutableArray*)createEmptyGameArray;
-- (void)calculateGameScore;
+
+//Beast method (heart & soul)
+- (void)calculateFrameScore:(int)frameNumber;
+
+- (void)nextThrow;
+- (void)previousThrow;
 - (void)addThrowCountToGameObject:(NSString*)throwCount;
-- (void)clearGameScoring;
 - (void)updateScoreCard;
 - (void)clearGameScoreCard;
-
 
 
 //Game Array

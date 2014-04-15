@@ -19,6 +19,18 @@
         [self addSubview:_mainView];
         
         
+        //FrameLabels
+        _frameLabels = @[ /*Frame 1*/ _frameLabel_1,
+                          /*Frame 2*/ _frameLabel_2,
+                          /*Frame 3*/ _frameLabel_3,
+                          /*Frame 4*/ _frameLabel_4,
+                          /*Frame 5*/ _frameLabel_5,
+                          /*Frame 6*/ _frameLabel_6,
+                          /*Frame 7*/ _frameLabel_7,
+                          /*Frame 8*/ _frameLabel_8,
+                          /*Frame 9*/ _frameLabel_9,
+                          /*Frame 10*/ _frameLabel_10];
+        
         //Define throw label grouping
         _frames = @[ /*Frame 1*/   @[_throw_1,   _throw_2],
                      /*Frame 2*/   @[_throw_3,   _throw_4],
