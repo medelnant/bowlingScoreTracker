@@ -144,19 +144,13 @@
 - (void)calculateFrameScore {
     
     int tempGameTotal = 0;
-    
-    NSLog(@"GameArrayFrameCount = %lu", (unsigned long)_activeGameScoreArray.count);
-    NSLog(@"GameArray = %@", _activeGameScoreArray);
+
     for (NSInteger i = 0; i < _activeGameScoreArray.count; i++) {
         
         int tempFrameTotal = 0;
         int tempThrow1 = [[_activeGameScoreArray[i] valueForKey:@"throw1"] intValue];
         int tempThrow2 = [[_activeGameScoreArray[i] valueForKey:@"throw2"] intValue];
         int tempCombinedThrow = tempThrow1 + tempThrow2;
-        
-        
-        NSLog(@"--------------------------------------------------");
-        NSLog(@"Active index is : %ld", (long)i);
         
         if(i < (_activeGameScoreArray.count-1)) {
             
@@ -167,14 +161,14 @@
                 tempThrow1 = 10;
                 
                 //Frame total is equal to first throw of 10
-                tempFrameTotal = (tempFrameTotal + tempThrow1);
+                tempFrameTotal += tempThrow1;
                 
                 //If next frame is strike
                 if([[_activeGameScoreArray[i+1] valueForKey:@"isStrike"] isEqualToString:@"true"]) {
                     
                     //Keep adding to frame total
-                    tempFrameTotal = (tempFrameTotal + 10);
-                    NSLog(@"There is a strike in the next frame. I'm psychic. And my pin total is now:  %d", tempFrameTotal);
+                    tempFrameTotal += 10;
+                    //NSLog(@"There is a strike in the next frame. I'm psychic. And my pin total is now:  %d", tempFrameTotal);
                     
                     //If two frames away is strike
                     if(i < (_activeGameScoreArray.count-2)) {
@@ -182,21 +176,21 @@
                         if([[_activeGameScoreArray[i+2] valueForKey:@"isStrike"] isEqualToString:@"true"]) {
                             
                             //Keep adding to frame total
-                            tempFrameTotal = (tempFrameTotal + 10);
-                            NSLog(@"There is a strike two frames away. I'm psychic. And my pin total is now:  %d", tempFrameTotal);
+                            tempFrameTotal += 10;
+                            //NSLog(@"There is a strike two frames away. I'm psychic. And my pin total is now:  %d", tempFrameTotal);
                             
                         } else {
                             //Retrieve next frame first throw
                             int tempTwoThrowsAway = [[_activeGameScoreArray[i+2] valueForKey:@"throw1"] intValue];
                             
                             //Frame total is equal to 10 + nextThrow
-                            tempFrameTotal = (tempFrameTotal) + tempTwoThrowsAway;
-                            NSLog(@"This frame is a spare. And my pin total is now:  %d", tempFrameTotal);
+                            tempFrameTotal += tempTwoThrowsAway;
+                            //NSLog(@"This frame is a spare. And my pin total is now:  %d", tempFrameTotal);
                         }
                     }
                     
                 } else if([[_activeGameScoreArray[i+1] valueForKey:@"isSpare"] isEqualToString:@"true"]){
-                    tempFrameTotal = tempFrameTotal + 10;
+                    tempFrameTotal += 10;
                 }
             
             //If frame is spare
@@ -211,67 +205,65 @@
                 }
                 
                 //Frame total is equal to 10 + nextThrow
-                tempFrameTotal = (tempFrameTotal + 10) + tempNextThrow;
-                NSLog(@"This frame is a spare. And my pin total is now:  %d", tempFrameTotal);
+                tempFrameTotal += (10 + tempNextThrow);
+                //NSLog(@"This frame is a spare. And my pin total is now:  %d", tempFrameTotal);
                 
-            
             //If frame is normal (no strike nor spare)
             } else {
                 
                 //Frame total is equal to the combined total of throw 1 and throw 2
-                tempFrameTotal = tempFrameTotal + tempCombinedThrow;
-                NSLog(@"This frame is a regular frame. And my pin total is now:  %d", tempFrameTotal);
-            }
-        } else {
-            
-            int tempThrow3 = [[_activeGameScoreArray[i] valueForKey:@"throw3"] intValue];
-            
-            //If first throw of tenth frame is a strike
-            if(![[_activeGameScoreArray[i] valueForKey:@"throw1"] isEqualToString:@"10"]) {
-            
-            } else {
-                
-                //tempFrameTotal = (tempFrameTotal + tempThrow1);
-                
+                tempFrameTotal += tempCombinedThrow;
+                //NSLog(@"This frame is a regular frame. And my pin total is now:  %d", tempFrameTotal);
             }
             
-            //If second throw of tenth frame is a strike
-            if(![[_activeGameScoreArray[i] valueForKey:@"throw2"] isEqualToString:@"10"]) {
+            //If ninth frame (index 8)
+            if(i == 8) {
+                //Determine if 10th frame spare happens
+                int tenthFrameThrow1 = [[_activeGameScoreArray[i+1] valueForKey:@"throw1"] intValue];
+                int tenthFrameThrow2 = [[_activeGameScoreArray[i+1] valueForKey:@"throw2"] intValue];
+                int tenthFrameFirstTwoThrows = tenthFrameThrow1 + tenthFrameThrow2;
                 
-                tempFrameTotal = (tempFrameTotal + tempThrow2);
-                
-            } else {
-                
-                tempFrameTotal = (tempFrameTotal + 10);
-                if([[_activeGameScoreArray[i-1]valueForKey:@"isStrike"] isEqualToString:@"true"]) {
-                    NSLog(@"Previous frame was a strike!!!!! Let's do this!");
-                    int ninthFrameTotal = [[_activeGameScoreArray[i-1] valueForKey:@"frameTotal"] intValue];
-                    [_activeGameScoreArray[i-1] setValue:[NSString stringWithFormat:@"%d", (ninthFrameTotal + 20)] forKey:@"frameTotal"];
-                    tempGameTotal = tempGameTotal + 20;
+                if([[_activeGameScoreArray[i] valueForKey:@"isStrike"] isEqualToString:@"true"]) {
+                    
+                    //If throw is a strike (10th frame)
+                    if(tenthFrameThrow1 == 10) {
+                        
+                        //Keep adding to frame total
+                        tempFrameTotal += 10;
+                        
+                        //NSLog(@"There is a strike in the next frame. I'm psychic. And my pin total is now:  %d", tempFrameTotal);
+                        if(tenthFrameThrow2 == 10) {
+                            
+                            //Keep adding to frame total
+                            tempFrameTotal += 10;
+                            //NSLog(@"There is a strike two frames away. I'm psychic. And my pin total is now:  %d", tempFrameTotal);
+                        }
+                        
+                        //If frame is spare
+                    } else if(tenthFrameFirstTwoThrows == 10){
+                        
+                        tempFrameTotal += 10;
+                    }
                 }
-                
             }
             
-            //If third throw of tenth frame is a strike
-            if(![[_activeGameScoreArray[i] valueForKey:@"throw3"] isEqualToString:@"10"]) {
+        } else {
+            int tenthFrameThrow1 = [[_activeGameScoreArray[i] valueForKey:@"throw1"] intValue];
+            int tenthFrameThrow2 = [[_activeGameScoreArray[i] valueForKey:@"throw2"] intValue];
+            int tenthFrameThrow3 = [[_activeGameScoreArray[i] valueForKey:@"throw3"] intValue];
             
-                tempFrameTotal = (tempFrameTotal + tempThrow3);
-            
-            }
-            
-            tempGameTotal = tempGameTotal + tempFrameTotal;
-            [_activeGameScoreArray[i] setValue:[NSString stringWithFormat:@"%d", tempGameTotal] forKey:@"frameTotal"];
+            tempFrameTotal = tenthFrameThrow1 + tenthFrameThrow2 + tenthFrameThrow3;
             
         }
         
-        tempGameTotal = tempGameTotal + tempFrameTotal;
+        tempGameTotal += tempFrameTotal;
         
         //Write game total to frame
         [_activeGameScoreArray[i] setValue:[NSString stringWithFormat:@"%d", tempGameTotal] forKey:@"frameTotal"];
         
-        NSLog(@"tempGameTotal = %d", tempGameTotal);
-        
-        NSLog(@"--------------------------------------------------");
+        if(![[_activeGameScoreArray[9] valueForKey:@"throw3"] isEqualToString:@""]) {
+            NSLog(@"My Final Game Array Looks Like This: %@", _activeGameScoreArray);
+        }
         
     }
     
@@ -292,6 +284,22 @@
             NSString * frameThrowCount1 = [_activeGameScoreArray[i] valueForKey:@"throw1"];
             NSString * frameThrowCount2 = [_activeGameScoreArray[i] valueForKey:@"throw2"];
             NSString * frameThrowCount3 = [_activeGameScoreArray[i] valueForKey:@"throw3"];
+            int frameCombinedThrow = [frameThrowCount1 intValue] + [frameThrowCount2 intValue];
+            int latterFrameCombinedThrow = [frameThrowCount2 intValue] + [frameThrowCount3 intValue];
+            
+            //Decode spare scenario to show appopriate label for second throw
+            if([frameThrowCount1 intValue] != 10 && frameCombinedThrow == 10) {
+                frameThrowCount2 = @"/"; //Second Frame Handling
+            }
+            if([frameThrowCount2 intValue] != 10 && latterFrameCombinedThrow == 10) {
+                frameThrowCount3 = @"/"; // Third Frame Handling
+            }
+            
+            
+            //Decode strike pin count to show appopriate label
+            if([frameThrowCount1 isEqualToString:@"10"]) {frameThrowCount1 = @"X";}
+            if([frameThrowCount2 isEqualToString:@"10"]) {frameThrowCount2 = @"X";}
+            if([frameThrowCount3 isEqualToString:@"10"]) {frameThrowCount3 = @"X";}
             
             [_scoreCardView.frames[i][0] setText:frameThrowCount1];
             [_scoreCardView.frames[i][1] setText:frameThrowCount2];
@@ -302,6 +310,18 @@
         } else {
             NSString * frameThrowCount1 = [_activeGameScoreArray[i] valueForKey:@"throw1"];
             NSString * frameThrowCount2 = [_activeGameScoreArray[i] valueForKey:@"throw2"];
+            int frameCombinedThrow = [frameThrowCount1 intValue] + [frameThrowCount2 intValue];
+            
+            //Decode spare scenario to show appopriate label for second throw
+            if([frameThrowCount1 intValue] != 10 && frameCombinedThrow == 10) {
+                frameThrowCount2 = @"/";
+            }
+            
+            //Decode strike pin count to show appopriate label
+            if([frameThrowCount1 isEqualToString:@"10"]) {
+                frameThrowCount1 = @"X";
+                frameThrowCount2 = @"";
+            }
             
             [_scoreCardView.frames[i][0] setText:frameThrowCount1];
             [_scoreCardView.frames[i][1] setText:frameThrowCount2];
@@ -342,6 +362,7 @@
             //NSLog(@"Adding tenth frame throws");
             NSString * tenthFrameThrow = [NSString stringWithFormat:@"throw%d", frameThrowCount];
             [_activeGameScoreArray[overallFrameCounter] setObject:throwCount forKey:tenthFrameThrow];
+            maxFrameThrowCount = 3;
 
         } else {
             
@@ -366,8 +387,14 @@
             //If total is equal to 10 then we have a spare
             if (tempCombinedThrow == 10) {
                 
-                //Set spare flag on frame
-                [_activeGameScoreArray[overallFrameCounter] setValue:@"true" forKey:@"isSpare"];
+                if(overallFrameCounter == (_activeGameScoreArray.count-1)) {
+                    maxFrameThrowCount = 3;
+                } else {
+                    
+                    //Set spare flag on frame
+                    [_activeGameScoreArray[overallFrameCounter] setValue:@"true" forKey:@"isSpare"];
+                
+                }
             }
         }
         
@@ -430,10 +457,10 @@
     if (![_throwCountLabel.text  isEqual: @""]) {
         
         //If throw is second or third throw
-        if(frameThrowCount == maxFrameThrowCount) {
+        if(frameThrowCount <= maxFrameThrowCount && frameThrowCount > 1) {
             
             // If second throw causes frame total to exceed 10 stop and alert
-            if ([_throwCountLabel.text intValue] > (10 - firstFramePinCount)) {
+            if ([_throwCountLabel.text intValue] > (10 - firstFramePinCount) && overallFrameCounter < (_activeGameScoreArray.count-1)) {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
                                                                     message:@"You cannot enter a pin value that will cause frame total to exceed 10"
                                                                    delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -458,7 +485,11 @@
                 if(overallFrameCounter == (_activeGameScoreArray.count-1)) {
                     
                     //NSLog(@"Test Advance Click Next: %d out of %lu", overallFrameCounter, (_activeGameScoreArray.count -1));
-                    maxFrameThrowCount = 3;
+                    //maxFrameThrowCount = 3;
+                    
+                    if (frameThrowCount < maxFrameThrowCount) {
+                        frameThrowCount++;
+                    }
                     
                     //HightLight current frame
                     [_scoreCardView.frameLabels[overallFrameCounter] setBackgroundColor:[UIColor darkGrayColor]];
@@ -500,7 +531,7 @@
                 if(overallFrameCounter == (_activeGameScoreArray.count-1)) {
                     
                     //Reset max throw count to 3
-                    maxFrameThrowCount = 3;
+                    //maxFrameThrowCount = 3;
                     
                     //Increment frameThrowCount
                     frameThrowCount++;
