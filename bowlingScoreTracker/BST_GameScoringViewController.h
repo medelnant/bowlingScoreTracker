@@ -52,7 +52,7 @@
 - (NSMutableArray*)createEmptyGameArray;
 
 //Beast method (heart & soul)
-- (void)calculateFrameScore:(int)frameNumber;
+- (void)calculateFrameScore;
 
 - (void)nextThrow;
 - (void)previousThrow;
