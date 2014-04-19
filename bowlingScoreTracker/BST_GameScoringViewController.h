@@ -2,11 +2,16 @@
 //  BST_GameScoringViewController.h
 //  bowlingScoreTracker
 //
+//  ADP 1 | Week 3 | Term 1404
+//  Michael Edelnant
+//  Instructor: Lyndon Modomo
+//
 //  Created by vAesthetic on 4/12/14.
 //  Copyright (c) 2014 medelnant. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "QuartzCore/QuartzCore.h"
 #import <Parse/Parse.h>
 #import "SWRevealViewController/SWRevealViewController.h"
 #import "BST_GameScoreCardNib.h"
@@ -31,8 +36,10 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scoreCardScrollView;
 @property (weak, nonatomic) IBOutlet UIView *scorePadEntryView;
 
-//Define pad class
+//Define scorecard class class
 @property (strong, nonatomic) BST_GameScoreCardNib * scoreCardView;
+@property (strong, nonatomic) BST_KeyPadEntryNib * userEntryKeyPad;
+@property (strong, nonatomic) BST_PinPadEntryNib * userEntryPinPad;
 
 //Define view controls (SegmentedControl, Labels, Buttons)
 @property (weak, nonatomic) IBOutlet UISegmentedControl *scoringEntrySegmentedControl;
@@ -54,11 +61,14 @@
 //Beast method (heart & soul)
 - (void)calculateFrameScore;
 
+- (void)debugGame;
+
 - (void)nextThrow;
 - (void)previousThrow;
 - (void)addThrowCountToGameObject:(NSString*)throwCount;
 - (void)updateScoreCard;
 - (void)clearGameScoreCard;
+- (void)endGameAndSave;
 
 
 //Game Array

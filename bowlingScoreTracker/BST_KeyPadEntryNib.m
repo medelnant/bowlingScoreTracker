@@ -2,6 +2,10 @@
 //  BST_KeyPadEntryNib.m
 //  bowlingScoreTracker
 //
+//  ADP 1 | Week 3 | Term 1404
+//  Michael Edelnant
+//  Instructor: Lyndon Modomo
+//
 //  Created by vAesthetic on 4/12/14.
 //  Copyright (c) 2014 medelnant. All rights reserved.
 //
@@ -17,6 +21,9 @@
         // Initialization code
         [[NSBundle mainBundle] loadNibNamed:@"KeyPadEntry" owner:self options:nil];
         [self addSubview:_mainView];
+        
+        _keyPadButton = @[_strikeSpareButton];
+        
     }
     return self;
 }

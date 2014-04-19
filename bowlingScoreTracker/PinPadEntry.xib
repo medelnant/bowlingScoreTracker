@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -7,6 +7,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BST_PinPadEntryNib">
             <connections>
                 <outlet property="mainView" destination="iN0-l3-epB" id="BGS-bo-8rL"/>
+                <outlet property="pinBtn_1" destination="cIf-6W-lcl" id="t8X-zH-soJ"/>
+                <outlet property="pinBtn_10" destination="g3O-ba-VP8" id="TZN-2D-OXa"/>
+                <outlet property="pinBtn_2" destination="ytL-fk-oA6" id="Ne5-IL-Xyx"/>
+                <outlet property="pinBtn_3" destination="lfC-o6-mbf" id="DfX-a3-SDI"/>
+                <outlet property="pinBtn_4" destination="x6u-I3-lG0" id="ARU-BQ-qMj"/>
+                <outlet property="pinBtn_5" destination="JAa-LD-DI5" id="v2z-ht-YnD"/>
+                <outlet property="pinBtn_6" destination="6VZ-kM-4y8" id="2bi-In-Ivf"/>
+                <outlet property="pinBtn_7" destination="1hk-0l-roW" id="x1O-xe-HRr"/>
+                <outlet property="pinBtn_8" destination="yah-3u-qZT" id="ce6-Sc-5TK"/>
+                <outlet property="pinBtn_9" destination="fIA-uj-IJT" id="5Qb-pX-DNK"/>
+                <outlet property="splitButton" destination="rUh-ec-VmD" id="pKr-ns-XEm"/>
                 <outlet property="strikeSpareButton" destination="PGb-gG-Erg" id="R0L-Vk-vWD"/>
             </connections>
         </placeholder>
@@ -59,111 +70,149 @@
                         <action selector="PinPadTouched:" destination="-1" eventType="touchUpInside" id="lcd-28-zWk"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIf-6W-lcl">
-                    <rect key="frame" x="138" y="171" width="44" height="44"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQo-Cn-dns">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="222"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="1">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIf-6W-lcl">
+                    <rect key="frame" x="138" y="168" width="44" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <state key="normal" title="1" backgroundImage="pinButton_off.png">
                         <color key="titleColor" red="0.3058823645" green="0.62745100259999997" blue="0.82745105029999999" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="selected" backgroundImage="pinButton_on.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="PinPadTouched:" destination="-1" eventType="touchUpInside" id="zjw-XY-X96"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytL-fk-oA6">
-                    <rect key="frame" x="105" y="118" width="44" height="44"/>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytL-fk-oA6">
+                    <rect key="frame" x="105" y="115" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="2">
+                    <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <state key="normal" title="2" backgroundImage="pinButton_off.png">
                         <color key="titleColor" red="0.3058823645" green="0.62745100259999997" blue="0.82745105029999999" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="selected" backgroundImage="pinButton_on.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="PinPadTouched:" destination="-1" eventType="touchUpInside" id="rdM-8k-DST"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfC-o6-mbf">
-                    <rect key="frame" x="170" y="118" width="44" height="44"/>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfC-o6-mbf">
+                    <rect key="frame" x="170" y="115" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="3">
+                    <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <state key="normal" title="3" backgroundImage="pinButton_off.png">
                         <color key="titleColor" red="0.3058823645" green="0.62745100259999997" blue="0.82745105029999999" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="selected" backgroundImage="pinButton_on.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="PinPadTouched:" destination="-1" eventType="touchUpInside" id="1Ag-sy-8fs"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAa-LD-DI5">
-                    <rect key="frame" x="138" y="65" width="44" height="44"/>
+                <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAa-LD-DI5">
+                    <rect key="frame" x="138" y="62" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="5">
+                    <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <state key="normal" title="5" backgroundImage="pinButton_off.png">
                         <color key="titleColor" red="0.3058823645" green="0.62745100259999997" blue="0.82745105029999999" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="selected" backgroundImage="pinButton_on.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="PinPadTouched:" destination="-1" eventType="touchUpInside" id="2YT-ya-QpO"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VZ-kM-4y8">
-                    <rect key="frame" x="202" y="65" width="44" height="44"/>
+                <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VZ-kM-4y8">
+                    <rect key="frame" x="202" y="62" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="6">
+                    <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <state key="normal" title="6" backgroundImage="pinButton_off.png">
                         <color key="titleColor" red="0.3058823645" green="0.62745100259999997" blue="0.82745105029999999" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="selected" backgroundImage="pinButton_on.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="PinPadTouched:" destination="-1" eventType="touchUpInside" id="iuu-su-K9L"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6u-I3-lG0">
-                    <rect key="frame" x="75" y="65" width="44" height="44"/>
+                <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6u-I3-lG0">
+                    <rect key="frame" x="75" y="62" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="4">
+                    <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <state key="normal" title="4" backgroundImage="pinButton_off.png">
                         <color key="titleColor" red="0.3058823645" green="0.62745100259999997" blue="0.82745105029999999" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="selected" backgroundImage="pinButton_on.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="PinPadTouched:" destination="-1" eventType="touchUpInside" id="3VL-ac-UtL"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIA-uj-IJT">
-                    <rect key="frame" x="170" y="13" width="44" height="44"/>
+                <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIA-uj-IJT">
+                    <rect key="frame" x="170" y="10" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="9">
+                    <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <state key="normal" title="9" backgroundImage="pinButton_off.png">
                         <color key="titleColor" red="0.3058823645" green="0.62745100259999997" blue="0.82745105029999999" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="selected" backgroundImage="pinButton_on.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="PinPadTouched:" destination="-1" eventType="touchUpInside" id="Px3-Ee-dCG"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3O-ba-VP8">
-                    <rect key="frame" x="233" y="13" width="44" height="44"/>
+                <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3O-ba-VP8">
+                    <rect key="frame" x="233" y="10" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="10">
+                    <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <state key="normal" title="10" backgroundImage="pinButton_off.png">
                         <color key="titleColor" red="0.3058823645" green="0.62745100259999997" blue="0.82745105029999999" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="selected" backgroundImage="pinButton_on.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="PinPadTouched:" destination="-1" eventType="touchUpInside" id="pYZ-Je-hvu"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yah-3u-qZT">
-                    <rect key="frame" x="105" y="13" width="44" height="44"/>
+                <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yah-3u-qZT">
+                    <rect key="frame" x="105" y="10" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="8">
+                    <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <state key="normal" title="8" backgroundImage="pinButton_off.png">
                         <color key="titleColor" red="0.3058823645" green="0.62745100259999997" blue="0.82745105029999999" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="selected" backgroundImage="pinButton_on.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="PinPadTouched:" destination="-1" eventType="touchUpInside" id="A46-SX-Ata"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hk-0l-roW">
-                    <rect key="frame" x="38" y="13" width="44" height="44"/>
+                <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hk-0l-roW">
+                    <rect key="frame" x="38" y="10" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="7">
+                    <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <state key="normal" title="7" backgroundImage="pinButton_off.png">
                         <color key="titleColor" red="0.3058823645" green="0.62745100259999997" blue="0.82745105029999999" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="selected" backgroundImage="pinButton_on.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="PinPadTouched:" destination="-1" eventType="touchUpInside" id="qSy-S8-Okb"/>
@@ -174,4 +223,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="pinButton_off.png" width="44" height="44"/>
+        <image name="pinButton_on.png" width="44" height="44"/>
+    </resources>
 </document>

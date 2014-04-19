@@ -53,6 +53,10 @@
 		53CEF07318F5F401006B20DC /* BST_SessionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CEF07218F5F401006B20DC /* BST_SessionsTableViewController.m */; };
 		53CEF07818F631AD006B20DC /* BST_VenueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CEF07718F631AD006B20DC /* BST_VenueTableViewController.m */; };
 		53CEF07C18F66587006B20DC /* BST_GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CEF07B18F66587006B20DC /* BST_GameViewController.m */; };
+		53E60E39190078E800214176 /* pinButton_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E60E35190078E800214176 /* pinButton_on@2x.png */; };
+		53E60E3A190078E800214176 /* pinButton_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E60E36190078E800214176 /* pinButton_on.png */; };
+		53E60E3B190078E800214176 /* pinButton_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E60E37190078E800214176 /* pinButton_off.png */; };
+		53E60E3C190078E800214176 /* pinButton_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E60E38190078E800214176 /* pinButton_off@2x.png */; };
 		53F5810918F217320098FE58 /* BST_UserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F5810818F217320098FE58 /* BST_UserSettingsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +133,10 @@
 		53CEF07718F631AD006B20DC /* BST_VenueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_VenueTableViewController.m; sourceTree = "<group>"; };
 		53CEF07A18F66587006B20DC /* BST_GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_GameViewController.h; sourceTree = "<group>"; };
 		53CEF07B18F66587006B20DC /* BST_GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_GameViewController.m; sourceTree = "<group>"; };
+		53E60E35190078E800214176 /* pinButton_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinButton_on@2x.png"; sourceTree = "<group>"; };
+		53E60E36190078E800214176 /* pinButton_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinButton_on.png; sourceTree = "<group>"; };
+		53E60E37190078E800214176 /* pinButton_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinButton_off.png; sourceTree = "<group>"; };
+		53E60E38190078E800214176 /* pinButton_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinButton_off@2x.png"; sourceTree = "<group>"; };
 		53F5810718F217320098FE58 /* BST_UserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_UserSettingsViewController.h; sourceTree = "<group>"; };
 		53F5810818F217320098FE58 /* BST_UserSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_UserSettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53670C2718F1737B0027F9EE /* QuartzCore.framework in Frameworks */,
 				53670C2F18F178170027F9EE /* Twitter.framework in Frameworks */,
 				53670C2D18F178110027F9EE /* Accounts.framework in Frameworks */,
 				53670C2218F1737B0027F9EE /* AudioToolbox.framework in Frameworks */,
@@ -145,7 +154,6 @@
 				53670C2418F1737B0027F9EE /* CoreLocation.framework in Frameworks */,
 				53670C2518F1737B0027F9EE /* libz.dylib in Frameworks */,
 				53670C2618F1737B0027F9EE /* MobileCoreServices.framework in Frameworks */,
-				53670C2718F1737B0027F9EE /* QuartzCore.framework in Frameworks */,
 				53670C3118F17F300027F9EE /* FacebookSDK.framework in Frameworks */,
 				53670C2818F1737B0027F9EE /* Security.framework in Frameworks */,
 				53670C2918F1737B0027F9EE /* Social.framework in Frameworks */,
@@ -388,6 +396,10 @@
 		53A0D30D18F7781D00E34117 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				53E60E35190078E800214176 /* pinButton_on@2x.png */,
+				53E60E36190078E800214176 /* pinButton_on.png */,
+				53E60E37190078E800214176 /* pinButton_off.png */,
+				53E60E38190078E800214176 /* pinButton_off@2x.png */,
 				5345DBED18F9A3CA00DD9D45 /* bst_gameScoreCardLines@2x.png */,
 				5345DBEE18F9A3CA00DD9D45 /* bst_gameScoreCardLines.png */,
 				53A0D30918F7781700E34117 /* launchPage.png */,
@@ -520,13 +532,17 @@
 			files = (
 				5345DBF018F9A3CA00DD9D45 /* bst_gameScoreCardLines.png in Resources */,
 				53A0D30C18F7781700E34117 /* launchPage2.png in Resources */,
+				53E60E3C190078E800214176 /* pinButton_off@2x.png in Resources */,
+				53E60E3B190078E800214176 /* pinButton_off.png in Resources */,
 				5345DBF218F9DA5A00DD9D45 /* GameScoreCard.xib in Resources */,
+				53E60E39190078E800214176 /* pinButton_on@2x.png in Resources */,
 				53670BF418F171CD0027F9EE /* Images.xcassets in Resources */,
 				53A0D30B18F7781700E34117 /* launchPage.png in Resources */,
 				53670BE618F171CD0027F9EE /* InfoPlist.strings in Resources */,
 				5345DC0D18FA1BC200DD9D45 /* PinPadEntry.xib in Resources */,
 				5345DBEF18F9A3CA00DD9D45 /* bst_gameScoreCardLines@2x.png in Resources */,
 				5345DC0318FA0C4800DD9D45 /* KeyPadEntry.xib in Resources */,
+				53E60E3A190078E800214176 /* pinButton_on.png in Resources */,
 				53670BEF18F171CD0027F9EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

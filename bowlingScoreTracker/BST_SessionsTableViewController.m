@@ -2,7 +2,7 @@
 //  BST_SessionsTableViewController.m
 //  bowlingScoreTracker
 //
-//  ADP 1 | Week 2 | Term 1404
+//  ADP 1 | Week 3 | Term 1404
 //  Michael Edelnant
 //  Instructor: Lyndon Modomo
 //
@@ -47,36 +47,33 @@
     //Add barButton right to trigger drawer slide open/close
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addSession)];
     
-    //Create Query for tableView
+    //Create session query for tableView
     _sessionQuery = [PFQuery queryWithClassName:@"Session"];
+
     
     //Define order
     [_sessionQuery orderByDescending:@"createdAt"];
     
-    //Define Cache Policy
-    _sessionQuery.cachePolicy = kPFCachePolicyNetworkElseCache;
-    
     //Bind relationship to currentUser for query
     [_sessionQuery whereKey:@"bowler" equalTo:[PFUser currentUser]];
-    
-    //Go Fetch
-    [_sessionQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if(!error) {
-            //NSLog(@"Success! here is the object returned.");
-            //NSLog(@"%lu", (unsigned long)objects.count);
-            
-            //Store query on clientSide within NSMutableArray
-            _clientSideSessionArray = [NSMutableArray arrayWithArray:objects];
-            
-            //Reload tableView after query object is returned
-            [[self tableView] reloadData];
-            
-            //Check session count to alert user with frienly uiAlertView to create session
-            [self checkSessionCount];
-        } else {
-            NSLog(@"Query error. Not good!");
+
+    //In a background thread fetch all data syncronously
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        //Use findObject instead of findObjectInBackground to guarantee all data has been loaded by the end of the method
+        NSArray * sessions = [_sessionQuery findObjects];
+        
+        //For all sessions query games
+        for (NSInteger i =0; i < sessions.count; i++) {
+            sessions[i][@"games"] = [[[sessions[i] relationForKey:@"games"] query] findObjects];
         }
-    }];
+        
+        //Utilize main que because any UI Operations MUST be done on the main que
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _clientSideSessionArray = [NSMutableArray arrayWithArray:sessions];
+            [[self tableView] reloadData];
+        });
+    });
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -108,15 +105,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    //Create array instance of just the games for this session
+    NSArray * sessionGamesArray = [_clientSideSessionArray[indexPath.row] valueForKey:@"games"];
+    
+    //Pointer for holding total series
+    int sessionTotalSeries;
+    
+    //Total up series for session
+    for (NSInteger i = 0; i < sessionGamesArray.count; i++) {
+        sessionTotalSeries += [[sessionGamesArray[i] valueForKey:@"totalScore"] intValue];
+    }
+    
+    //Do the math to determine average
+    int sessionAverage = sessionTotalSeries/sessionGamesArray.count;
+                                          
+    
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"sessionCell"];
     
     //Store title and creationDate within NSString pointer references
     NSString * sessionTitle = [[_clientSideSessionArray objectAtIndex:indexPath.row] valueForKey:@"title"];
-    NSString * updatedAt = [NSString stringWithFormat:@"Created At: %@", [[_clientSideSessionArray objectAtIndex:indexPath.row] valueForKey:@"updatedAt"]];
+    NSString * sessionRecap = [NSString stringWithFormat:@"%ld games | %d series | %d average", sessionGamesArray.count, sessionTotalSeries, sessionAverage];
     
     //Write values to appropriate labels within cell
     cell.textLabel.text = sessionTitle;
-    cell.detailTextLabel.text = updatedAt;
+    cell.detailTextLabel.text = sessionRecap;
+    cell.detailTextLabel.textColor = [UIColor darkGrayColor];
     
     return cell;
 }
@@ -296,6 +310,40 @@
         }
     }
 }
+
+/*
+- (void)addGamesQueryToSessions {
+    
+    if(_clientSideGameArray.count > 0 && _clientSideGameArray > 0) {
+        //Take gamesArray and add each game to a games container within session array.... phew!
+        for (NSInteger i = 0; i < _clientSideGameArray.count; i++) {
+            
+            NSString * gameSessionID = [[_clientSideGameArray[i] valueForKey:@"session"] valueForKey:@"objectId"];
+            NSMutableArray * gameArray = [[NSMutableArray alloc]init];
+            gameArray = [_clientSideGameArray[i] valueForKey:@"gameArray"];
+            
+            for (NSInteger j = 0; j < _clientSideSessionArray.count; j++) {
+                NSString * sessionID = [_clientSideSessionArray[j] valueForKey:@"objectId"];
+                
+                NSMutableArray * gamesContainer = [[NSMutableArray alloc]init];
+                [gamesContainer addObjectsFromArray:gameArray];
+                
+                if([gameSessionID isEqualToString:sessionID]) {
+                    [_clientSideSessionArray[j] addObject:gamesContainer forKey:@"games"];
+                }
+            }
+        }
+        
+        NSLog(@"New Session Object %@",[_clientSideSessionArray[0] valueForKey:@"games"]);
+        
+        //Check session count to alert user with frienly uiAlertView to create session
+        [self checkSessionCount];
+        
+        [[self tableView] reloadData];
+        
+    }
+}
+ */
 
 /*
  // Override to support conditional editing of the table view.

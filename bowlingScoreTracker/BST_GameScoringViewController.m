@@ -2,6 +2,10 @@
 //  BST_GameScoringViewController.m
 //  bowlingScoreTracker
 //
+//  ADP 1 | Week 3 | Term 1404
+//  Michael Edelnant
+//  Instructor: Lyndon Modomo
+//
 //  Created by vAesthetic on 4/12/14.
 //  Copyright (c) 2014 medelnant. All rights reserved.
 //
@@ -11,6 +15,9 @@
 
 @interface BST_GameScoringViewController () {
 
+    //Define throw Counter
+    int overallGameCount;
+    
     //Define throw Counter
     int overallFrameCounter;
     
@@ -29,8 +36,14 @@
     //Define GameTotal
     int gameTotal;
     
+    //Define PinPadEntry Pin Count
+    int pinPadEntryPinCount;
+    
     //Define tenthFrameCount
     bool tenthFrame;
+    
+    //Define bool for is usingPinPadEntry
+    bool isUsingPinPadEntry;
 }
 
 @end
@@ -50,14 +63,18 @@
 {
     [super viewDidLoad];
     
+    //Set overallgamecount to zero to initialize
+    overallGameCount = 0;
+    
     //Add gesture for swiping within navBar to trigger drawer slide open/close
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
     //Set View Title
-    self.navigationItem.title = [NSString stringWithFormat:@"%@ Game 1", [_currentSession valueForKey:@"title"]];
+    self.navigationItem.title = [NSString stringWithFormat:@"%@ Game %d", [_currentSession valueForKey:@"title"], overallGameCount];
     
     //Add barButton left to trigger drawer slide open/close
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self.revealViewController action:@selector( revealToggle: )];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(debugGame)];
     
      _scoreCardView = [[BST_GameScoreCardNib alloc] initWithFrame:CGRectMake(0, 0, 670, 90)];
     
@@ -70,10 +87,12 @@
     [_scoreCardScrollView addSubview: _scoreCardView];
     
     
-    BST_KeyPadEntryNib * numberEntryView = [[BST_KeyPadEntryNib alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
-    numberEntryView.delegate = self;
+
+    
+    _userEntryKeyPad = [[BST_KeyPadEntryNib alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
+    _userEntryKeyPad.delegate = self;
     //Add View to scoringEntry view
-    [_scorePadEntryView addSubview: numberEntryView];
+    [_scorePadEntryView addSubview: _userEntryKeyPad];
     
     //Create New Game on view load
     [self createNewGame];
@@ -92,13 +111,47 @@
 -(void) keyPadPressed:(NSInteger)buttonTagIndex forButtonTitle:(NSString*)buttonTitle {
     
     if([buttonTitle isEqualToString:@"Foul"]) {
+        
         _throwCountLabel.text = buttonTitle;
-        [self addThrowCountToGameObject:@"0"];
+    
     } else if ([buttonTitle isEqualToString:@"Clear"]) {
+        
+        //Clear countLabel
         _throwCountLabel.text = @"";
-        NSLog(@"Clear Frame Pressed");
+        
+        //if tenth frame
+        if(overallFrameCounter == 9) {
+            
+            //Clear throw values from object
+            [_activeGameScoreArray[overallFrameCounter] setValue:@"" forKey:@"throw1"];
+            [_activeGameScoreArray[overallFrameCounter] setValue:@"" forKey:@"throw2"];
+            [_activeGameScoreArray[overallFrameCounter] setValue:@"" forKey:@"throw3"];
+        
+        } else {
+        
+            //Clear throw values from object
+            [_activeGameScoreArray[overallFrameCounter] setValue:@"" forKey:@"throw1"];
+            [_activeGameScoreArray[overallFrameCounter] setValue:@"" forKey:@"throw2"];
+            
+        }
+        
+        //Reset frame throw count back to 1
+        frameThrowCount = 1;
+        
+        //Update scorecard to reflect the clear action
+        [self updateScoreCard];
+        
     } else if ([buttonTitle isEqualToString:@"Split"]) {
-        NSLog(@"Split Indicator Pressed");
+        NSLog(@"OverallFrameCounter = %d", overallFrameCounter);
+        
+        if(![[_activeGameScoreArray[overallFrameCounter] valueForKey:@"isSplit"] isEqualToString:@"true"]) {
+            [_activeGameScoreArray[overallFrameCounter] setValue:@"true" forKey:@"isSplit"];
+            [_userEntryKeyPad.splitButton setTintColor:[UIColor redColor]];
+        } else {
+            [_activeGameScoreArray[overallFrameCounter] setValue:@"false" forKey:@"isSplit"];
+            [_userEntryKeyPad.splitButton setTintColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1]];
+        }
+
     } else {
         _throwCountLabel.text = buttonTitle;
     }
@@ -110,23 +163,124 @@
 - (void)pinPadPressed:(NSInteger)buttonTagIndex forButtonTitle:(NSString*)buttonTitle {
     
     if([buttonTitle isEqualToString:@"Foul"]) {
+        
         _throwCountLabel.text = buttonTitle;
-        [self addThrowCountToGameObject:@"0"];
+        
+        
     } else if ([buttonTitle isEqualToString:@"Clear"]) {
+        
+        //Clear countLabel
         _throwCountLabel.text = @"";
-        NSLog(@"Clear Frame Pressed");
+        
+        
+        //if tenth frame
+        if(overallFrameCounter == 9) {
+            
+            //Clear throw values from object
+            [_activeGameScoreArray[overallFrameCounter] setValue:@"" forKey:@"throw1"];
+            [_activeGameScoreArray[overallFrameCounter] setValue:@"" forKey:@"throw2"];
+            [_activeGameScoreArray[overallFrameCounter] setValue:@"" forKey:@"throw3"];
+            
+        } else {
+            
+            //Clear throw values from object
+            [_activeGameScoreArray[overallFrameCounter] setValue:@"" forKey:@"throw1"];
+            [_activeGameScoreArray[overallFrameCounter] setValue:@"" forKey:@"throw2"];
+            
+        }
+        
+        //Reset frame throw count back to 1
+        frameThrowCount = 1;
+        
+        //Update scorecard to reflect the clear action
+        [self updateScoreCard];
+        
     } else if ([buttonTitle isEqualToString:@"Split"]) {
-        NSLog(@"Split Indicator Pressed");
+        
+        if(![[_activeGameScoreArray[overallFrameCounter] valueForKey:@"isSplit"] isEqualToString:@"true"]) {
+            [_activeGameScoreArray[overallFrameCounter] setValue:@"true" forKey:@"isSplit"];
+            [_userEntryPinPad.splitButton setTintColor:[UIColor redColor]];
+        } else {
+            [_activeGameScoreArray[overallFrameCounter] setValue:@"false" forKey:@"isSplit"];
+            [_userEntryPinPad.splitButton setTintColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1]];
+        }
+        
     } else {
+        
+        //pinPadEntryPinCount--;
+        //_throwCountLabel.text = [NSString stringWithFormat:@"%d", pinPadEntryPinCount];
         _throwCountLabel.text = buttonTitle;
     }
 }
 
 #pragma mark - Custom Methods
 
+- (void)debugGame {
+    
+    //Frame 1
+    [_activeGameScoreArray[0] setValue:@"9" forKey:@"throw1"];
+    [_activeGameScoreArray[0] setValue:@"1" forKey:@"throw2"];
+    [_activeGameScoreArray[0] setValue:@"true" forKey:@"isSpare"];
+
+    //Frame 2
+    [_activeGameScoreArray[1] setValue:@"10" forKey:@"throw1"];
+    [_activeGameScoreArray[1] setValue:@"" forKey:@"throw2"];
+    [_activeGameScoreArray[1] setValue:@"true" forKey:@"isStrike"];
+
+    //Frame 3
+    [_activeGameScoreArray[2] setValue:@"9" forKey:@"throw1"];
+    [_activeGameScoreArray[2] setValue:@"1" forKey:@"throw2"];
+    [_activeGameScoreArray[2] setValue:@"true" forKey:@"isSpare"];
+    
+    //Frame 4
+    [_activeGameScoreArray[3] setValue:@"10" forKey:@"throw1"];
+    [_activeGameScoreArray[3] setValue:@"" forKey:@"throw2"];
+    [_activeGameScoreArray[3] setValue:@"true" forKey:@"isStrike"];
+
+    //Frame 5
+    [_activeGameScoreArray[4] setValue:@"9" forKey:@"throw1"];
+    [_activeGameScoreArray[4] setValue:@"1" forKey:@"throw2"];
+    [_activeGameScoreArray[4] setValue:@"true" forKey:@"isSpare"];
+
+    //Frame 6
+    [_activeGameScoreArray[5] setValue:@"10" forKey:@"throw1"];
+    [_activeGameScoreArray[5] setValue:@"" forKey:@"throw2"];
+    [_activeGameScoreArray[5] setValue:@"true" forKey:@"isStrike"];
+
+    //Frame 7
+    [_activeGameScoreArray[6] setValue:@"9" forKey:@"throw1"];
+    [_activeGameScoreArray[6] setValue:@"1" forKey:@"throw2"];
+    [_activeGameScoreArray[6] setValue:@"true" forKey:@"isSpare"];
+
+    //Frame 8
+    [_activeGameScoreArray[7] setValue:@"10" forKey:@"throw1"];
+    [_activeGameScoreArray[7] setValue:@"" forKey:@"throw2"];
+    [_activeGameScoreArray[7] setValue:@"true" forKey:@"isStrike"];
+    
+    //Frame 9
+    [_activeGameScoreArray[8] setValue:@"9" forKey:@"throw1"];
+    [_activeGameScoreArray[8] setValue:@"1" forKey:@"throw2"];
+    [_activeGameScoreArray[8] setValue:@"true" forKey:@"isSpare"];
+    
+    overallFrameCounter = 9;
+    
+    [self calculateFrameScore];
+
+    //Frame 10
+    //[_activeGameScoreArray[9] setValue:@"X" forKey:@"throw1"];
+    //[_activeGameScoreArray[9] setValue:@"9" forKey:@"throw2"];
+    //[_activeGameScoreArray[9] setValue:@"1" forKey:@"throw3"];
+    
+}
+
 - (void)createNewGame {
     [self createEmptyGameArray];
     [self clearGameScoreCard];
+    
+    overallGameCount++;
+    
+    //Set View Title
+    self.navigationItem.title = [NSString stringWithFormat:@"%@ Game %d", [_currentSession valueForKey:@"title"], overallGameCount];
     
     //Set overallFrameCounter
     overallFrameCounter = 0;
@@ -139,6 +293,9 @@
     
     _frameStatusLabel.text  = @"Frame 1";
     _throwCountLabel.text   = @"";
+    
+    [self updateScoreCard];
+    
 }
 
 - (void)calculateFrameScore {
@@ -254,6 +411,18 @@
             
             tempFrameTotal = tenthFrameThrow1 + tenthFrameThrow2 + tenthFrameThrow3;
             
+            //If second throw in tenth frame is populated but not a strike, toggle the strike/spare button to spare.
+            if(tenthFrameThrow2 >= 1 && tenthFrameThrow2 != 10) {
+                [_userEntryKeyPad.strikeSpareButton setTitle:@"/" forState:UIControlStateNormal];
+                [_userEntryPinPad.strikeSpareButton setTitle:@"/" forState:UIControlStateNormal];
+            }
+            
+            //If third throw in tenth frame is populated - trigger end sequence
+            if(![[_activeGameScoreArray[9] valueForKey:@"throw3"] isEqualToString:@""]) {
+                NSLog(@"My Final Game Array Looks Like This: %@", _activeGameScoreArray);
+                //[self endGameAndSave];
+            }
+            
         }
         
         tempGameTotal += tempFrameTotal;
@@ -261,9 +430,7 @@
         //Write game total to frame
         [_activeGameScoreArray[i] setValue:[NSString stringWithFormat:@"%d", tempGameTotal] forKey:@"frameTotal"];
         
-        if(![[_activeGameScoreArray[9] valueForKey:@"throw3"] isEqualToString:@""]) {
-            NSLog(@"My Final Game Array Looks Like This: %@", _activeGameScoreArray);
-        }
+
         
     }
     
@@ -313,15 +480,21 @@
             int frameCombinedThrow = [frameThrowCount1 intValue] + [frameThrowCount2 intValue];
             
             //Decode spare scenario to show appopriate label for second throw
-            if([frameThrowCount1 intValue] != 10 && frameCombinedThrow == 10) {
-                frameThrowCount2 = @"/";
-            }
+            if([frameThrowCount1 intValue] != 10 && frameCombinedThrow == 10) {frameThrowCount2 = @"/";}
             
             //Decode strike pin count to show appopriate label
             if([frameThrowCount1 isEqualToString:@"10"]) {
                 frameThrowCount1 = @"X";
                 frameThrowCount2 = @"";
             }
+            
+            //Decode Foul
+            if ([frameThrowCount1 isEqualToString:@"F"]) {[_scoreCardView.frames[i][0] setTextColor:[UIColor redColor]];}
+            if ([frameThrowCount2 isEqualToString:@"F"]) {[_scoreCardView.frames[i][1] setTextColor:[UIColor redColor]];}
+            
+            
+            //Handle split highlighting
+            if([[_activeGameScoreArray[i] valueForKey:@"isSplit"] isEqualToString:@"true"]) {[_scoreCardView.frames[i][0] setTextColor:[UIColor magentaColor]];}
             
             [_scoreCardView.frames[i][0] setText:frameThrowCount1];
             [_scoreCardView.frames[i][1] setText:frameThrowCount2];
@@ -336,8 +509,11 @@
     int i;
     
     //Clear throws
-    for (i=0; i <= 20; i++) {
-        //[_scoreCardView.throws[i] setText:@""];
+    for (i=0; i <= 9; i++) {
+        [_scoreCardView.frames[i][0] setText:@""];
+        [_scoreCardView.frames[i][0] setTextColor:[UIColor blackColor]];
+        [_scoreCardView.frames[i][1] setText:@""];
+        [_scoreCardView.frames[i][1] setTextColor:[UIColor blackColor]];
     };
     
     //Clear frame totals
@@ -345,11 +521,28 @@
         [_scoreCardView.frameTotals[i] setText:@""];
     };
     
+    [_scoreCardView.frameLabels[9] setBackgroundColor:[UIColor lightGrayColor]];
+    [_scoreCardView.frameLabels[0] setBackgroundColor:[UIColor darkGrayColor]];
+    [_scoreCardScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    
+}
+
+- (void)endGameAndSave {
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Game Complete"
+                                                        message:@"Would you like to start a new game? If you choose no, session will end and your game will be saved."
+                                                       delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    [alertView show];
+
+
 }
 
 - (void)addThrowCountToGameObject:(NSString*)throwCount {
     
-    //NSLog(@"addThrowCountToGameObject value passed is : %@", throwCount);
+    //Handle Fouls
+    if([throwCount isEqualToString:@"Foul"]) {
+        throwCount = @"F";
+    }
     
     //Decode Strike to pin count and send pin count and advance to next frame
     if([throwCount isEqualToString:@"X"]) {
@@ -380,9 +573,27 @@
             
             //Grab throw 1
             int tempThrow1 = [[_activeGameScoreArray[overallFrameCounter] valueForKey:@"throw1"] intValue];
+            int tempThrow2 = [[_activeGameScoreArray[overallFrameCounter] valueForKey:@"throw2"] intValue];
+            int tempCombinedThrow;
+            int tempCombinedLatterThrow;
             
-            //Add both throws together
-            int tempCombinedThrow = tempThrow1 + [throwCount intValue];
+            tempCombinedThrow = tempThrow1 + [throwCount intValue];
+            tempCombinedLatterThrow = tempThrow2 + [throwCount intValue];
+            
+            if(overallFrameCounter == (_activeGameScoreArray.count-1)) {
+                if(tempThrow1 == 10 && tempThrow2 >= 1 && tempThrow2 != 10) {
+                    NSLog(@"Is this even catching?");
+                    if([throwCount isEqualToString:@"/"]) {
+                        throwCount = [NSString stringWithFormat:@"%d", (10-tempThrow2)];
+                    }
+                } else {
+                    //Add both throws together
+                    if([throwCount isEqualToString:@"/"]) {
+                        throwCount = [NSString stringWithFormat:@"%d", (10-tempThrow1)];
+                    }
+                }
+            }
+            
             
             //If total is equal to 10 then we have a spare
             if (tempCombinedThrow == 10) {
@@ -411,7 +622,11 @@
     
     //If strike or throwCount is 2 then process score.
     if([[_activeGameScoreArray[overallFrameCounter] valueForKey:@"isStrike"] isEqualToString:@"true"] || frameThrowCount == 2 || frameThrowCount == 3) {
-
+        
+        //Reset Split Button to normal state
+        [_activeGameScoreArray[overallFrameCounter] setValue:@"false" forKey:@"isSplit"];
+        [_userEntryKeyPad.splitButton setTintColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1]];
+        
         [self calculateFrameScore];
         
     } else {
@@ -436,6 +651,7 @@
         [frame setValue:@"" forKey:@"throw2"];
         [frame setValue:@"false" forKey:@"isStrike"];
         [frame setValue:@"false" forKey:@"isSpare"];
+        [frame setValue:@"false" forKey:@"isSplit"];
         [frame setValue:@"" forKey:@"frameTotal"];
         
         //Add third throw for 10th frame
@@ -459,21 +675,30 @@
         //If throw is second or third throw
         if(frameThrowCount <= maxFrameThrowCount && frameThrowCount > 1) {
             
+            //Disable Split Button
+            [_userEntryKeyPad.splitButton setEnabled:YES];
+            [_userEntryPinPad.splitButton setEnabled:YES];
+            
             // If second throw causes frame total to exceed 10 stop and alert
             if ([_throwCountLabel.text intValue] > (10 - firstFramePinCount) && overallFrameCounter < (_activeGameScoreArray.count-1)) {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
                                                                     message:@"You cannot enter a pin value that will cause frame total to exceed 10"
                                                                    delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alertView show];
-                
+            
             //Else proceed with grabbing throw count
             } else {
+                
+                //FLip button to strike
+                [_userEntryKeyPad.strikeSpareButton setTitle:@"X" forState:UIControlStateNormal];
+                [_userEntryPinPad.strikeSpareButton setTitle:@"X" forState:UIControlStateNormal];
                 
                 //Send user throw count to addThrowCountToGameObject
                 [self addThrowCountToGameObject:_throwCountLabel.text];
                 
                 //Clear throw count label
                 _throwCountLabel.text = @"";
+                
                 
                 //Reset firstFramePinCount
                 firstFramePinCount = 0;
@@ -515,6 +740,10 @@
         //If throw is first throw only
         } else {
             
+            //Enable Split Button
+            [_userEntryKeyPad.splitButton setEnabled:NO];
+            [_userEntryPinPad.splitButton setEnabled:NO];
+            
             //Set Frame firstThrowPinCount
             firstFramePinCount = [_throwCountLabel.text intValue];
             
@@ -524,6 +753,9 @@
             
             //If we're dealing with a strike
             if([_throwCountLabel.text isEqualToString:@"X"]) {
+                
+                [_userEntryKeyPad.splitButton setEnabled:YES];
+                [_userEntryPinPad.splitButton setEnabled:YES];
                 
                 firstFramePinCount = 10;
                 
@@ -560,6 +792,10 @@
                 
             } else {
                 
+                //FLip button to spare
+                [_userEntryKeyPad.strikeSpareButton setTitle:@"/" forState:UIControlStateNormal];
+                [_userEntryPinPad.strikeSpareButton setTitle:@"/" forState:UIControlStateNormal];
+                
                 //Advance to next throw
                 frameThrowCount++;
                 
@@ -568,6 +804,7 @@
             //Clear throw count label
             _throwCountLabel.text = @"";
             
+            
         }
         
     }
@@ -575,6 +812,11 @@
     //Advance scrollView for score card to second half of the card if in frame 5 or greater
     if(overallFrameCounter >= 5) {
         [_scoreCardScrollView setContentOffset:CGPointMake(320, 0) animated:YES];
+    }
+    
+    //Advance scrollView for score card to second half of the card if in frame 8 or greater
+    if(overallFrameCounter >= 8) {
+        [_scoreCardScrollView setContentOffset:CGPointMake(350, 0) animated:YES];
     }
 
 }
@@ -598,32 +840,107 @@
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
+        SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;
+        
+        swSegue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {
+            
+            UINavigationController* navController = (UINavigationController*)self.revealViewController.frontViewController;
+            [navController setViewControllers: @[dvc] animated: YES ];
+            [self.revealViewController setFrontViewPosition: FrontViewPositionLeftSideMost animated: YES];
+        };
+        
+    }
+
 }
-*/
+
+
+#pragma mark - UIAlertView Delegate Methods
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
+    //NSLog(@"Callback Will!");
+    
+    NSLog(@"%@", [NSString stringWithFormat:@"Alert Button Index: %ld", (long)buttonIndex]);
+    
+    //Retrive text from textfield and assign to pointer
+    NSString * gameTitle = [NSString stringWithFormat:@"Game %d", overallGameCount];
+    NSString * score = [_activeGameScoreArray[9] valueForKey:@"frameTotal"];
+    
+    //Create new game object
+    PFObject * newGame = [PFObject objectWithClassName:@"Game"];
+    
+    //Set attributes for object
+    [newGame setObject:[PFUser currentUser] forKey:@"bowler"];
+    [newGame setObject:gameTitle forKey:@"title"];
+    [newGame setObject:_activeGameScoreArray forKey:@"gameArray"];
+    [newGame setObject:score forKey:@"totalScore"];
+    
+    // Create relationship
+    [newGame setObject:_currentSession forKey:@"session"];
+    
+    [newGame saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if(!error) {
+            
+            //Call query method
+            //[self findGamesAssociatedWithSession];
+            
+            NSLog(@"Game has been saved!");
+            
+            PFRelation* relatedGames = [_currentSession relationForKey:@"games"];
+            
+            [relatedGames addObject:newGame];
+            [_currentSession saveInBackground];
+            
+        } else {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                                message:[error.userInfo objectForKey:@"error"]
+                                                               delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
+        };
+    }];
+    
+    
+
+    
+    if(buttonIndex != 0) {
+        [self createNewGame];
+    
+    } else {
+        [self performSegueWithIdentifier:@"returnToSessions" sender:nil];
+    }
+
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+
+}
 
 - (IBAction)scoringEntryOptionValueChanged:(UISegmentedControl *)sender {
     
     long index = sender.selectedSegmentIndex;
     
     if(index == 0) {
-        BST_KeyPadEntryNib * numberEntryView = [[BST_KeyPadEntryNib alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
-        numberEntryView.delegate = self;
+        _userEntryKeyPad = [[BST_KeyPadEntryNib alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
+        _userEntryKeyPad.delegate = self;
         //Add View to scoringEntry view
-        [_scorePadEntryView addSubview: numberEntryView];
+        [_scorePadEntryView addSubview: _userEntryKeyPad];
     } else {
-        BST_PinPadEntryNib * pinEntryView = [[BST_PinPadEntryNib alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
-        pinEntryView.delegate = self;
-        //Add View to scoringEntry view
-        [_scorePadEntryView addSubview: pinEntryView];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Developer Warning!"
+                                                            message:@"This section is still under development and will not perform as expected."
+                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
         
+        
+        _userEntryPinPad = [[BST_PinPadEntryNib alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
+        _userEntryPinPad.delegate = self;
+        //Add View to scoringEntry view
+        [_scorePadEntryView addSubview: _userEntryPinPad];
     }
     
 }

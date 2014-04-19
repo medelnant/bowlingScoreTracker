@@ -2,7 +2,7 @@
 //  BST_SessionsTableViewController.h
 //  bowlingScoreTracker
 //
-//  ADP 1 | Week 2 | Term 1404
+//  ADP 1 | Week 3 | Term 1404
 //  Michael Edelnant
 //  Instructor: Lyndon Modomo
 //
@@ -32,5 +32,8 @@
 
 //Check Session Count Method
 - (void)checkSessionCount;
+
+//InsertGamesToSession Method
+//- (void)addGamesQueryToSessions;
 @end
 
