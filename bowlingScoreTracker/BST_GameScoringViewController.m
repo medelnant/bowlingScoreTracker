@@ -44,6 +44,8 @@
     
     //Define bool for is usingPinPadEntry
     bool isUsingPinPadEntry;
+    
+    NSMutableArray * pinPadEntryPinsKnockedDown;
 }
 
 @end
@@ -189,6 +191,20 @@
             
         }
         
+        //Reset pin rack
+        for (NSInteger i = 0; i < _userEntryPinPad.pins.count; i++) {
+            [_userEntryPinPad.pins[i] setSelected:NO];
+        }
+        
+        //Re-Enable pins from previous throw and removePins from pinPadEntryPinKnockedDown
+        for (NSInteger i = 0; i < _userEntryPinPad.pins.count ; i++) {
+            [_userEntryPinPad.pins[i] setUserInteractionEnabled:YES];
+            [pinPadEntryPinsKnockedDown removeAllObjects];
+        }
+        
+        //Reset pinPadEntryPinCount
+        pinPadEntryPinCount = 0;
+        
         //Reset frame throw count back to 1
         frameThrowCount = 1;
         
@@ -205,11 +221,25 @@
             [_userEntryPinPad.splitButton setTintColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1]];
         }
         
+    }  else if([buttonTitle isEqualToString:@"X"] || [buttonTitle isEqualToString:@"/"]) {
+       
+        _throwCountLabel.text = buttonTitle;
+        
     } else {
         
-        //pinPadEntryPinCount--;
-        //_throwCountLabel.text = [NSString stringWithFormat:@"%d", pinPadEntryPinCount];
-        _throwCountLabel.text = buttonTitle;
+        if(![_userEntryPinPad.pins[buttonTagIndex] isSelected]) {
+            
+            //Store pin in array to disable for second throw state
+            [pinPadEntryPinsKnockedDown addObject:_userEntryPinPad.pins[buttonTagIndex]];
+            pinPadEntryPinCount++;
+        } else {
+            
+            //remove pin in array to disable for second throw state
+            [pinPadEntryPinsKnockedDown removeObject:_userEntryPinPad.pins[buttonTagIndex]];
+            pinPadEntryPinCount--;
+        }
+        
+        _throwCountLabel.text = [NSString stringWithFormat:@"%d", pinPadEntryPinCount];
     }
 }
 
@@ -420,7 +450,9 @@
             //If third throw in tenth frame is populated - trigger end sequence
             if(![[_activeGameScoreArray[9] valueForKey:@"throw3"] isEqualToString:@""]) {
                 NSLog(@"My Final Game Array Looks Like This: %@", _activeGameScoreArray);
-                //[self endGameAndSave];
+                
+                //Call endGameAndSave
+                [self endGameAndSave];
             }
             
         }
@@ -735,6 +767,18 @@
                 //Change frameStatusLabel to appropriate frame
                 _frameStatusLabel.text = [NSString stringWithFormat:@"Frame %d", (overallFrameCounter+1)];
                 
+                if(isUsingPinPadEntry) {
+                    //Reset pin rack
+                    for (NSInteger i = 0; i < _userEntryPinPad.pins.count; i++) {
+                        [_userEntryPinPad.pins[i] setSelected:NO];
+                    }
+                    
+                    //Re-Enable pins from previous throw and removePins from pinPadEntryPinKnockedDown
+                    for (NSInteger i = 0; i < _userEntryPinPad.pins.count ; i++) {
+                        [_userEntryPinPad.pins[i] setUserInteractionEnabled:YES];
+                        [pinPadEntryPinsKnockedDown removeAllObjects];
+                    }
+                }
             }
         
         //If throw is first throw only
@@ -752,10 +796,21 @@
             
             
             //If we're dealing with a strike
-            if([_throwCountLabel.text isEqualToString:@"X"]) {
+            if([_throwCountLabel.text isEqualToString:@"X"] || [_throwCountLabel.text isEqualToString:@"10"] ) {
                 
                 [_userEntryKeyPad.splitButton setEnabled:YES];
                 [_userEntryPinPad.splitButton setEnabled:YES];
+                
+                //Reset pin rack
+                for (NSInteger i = 0; i < _userEntryPinPad.pins.count; i++) {
+                    [_userEntryPinPad.pins[i] setSelected:NO];
+                }
+                
+                //Re-Enable pins from previous throw and removePins from pinPadEntryPinKnockedDown
+                for (NSInteger i = 0; i < _userEntryPinPad.pins.count ; i++) {
+                    [_userEntryPinPad.pins[i] setUserInteractionEnabled:YES];
+                    [pinPadEntryPinsKnockedDown removeAllObjects];
+                }
                 
                 firstFramePinCount = 10;
                 
@@ -798,15 +853,25 @@
                 
                 //Advance to next throw
                 frameThrowCount++;
-                
+        
             }
             
             //Clear throw count label
             _throwCountLabel.text = @"";
             
-            
         }
         
+        //If Using PinPadEntry
+        if(isUsingPinPadEntry) {
+            
+            //Reset PinPadEntryPinCount on every throw
+            pinPadEntryPinCount = 0;
+            
+            //Disable interaction with pins from first throw for second throw
+            for (NSInteger i = 0; i < pinPadEntryPinsKnockedDown.count ; i++) {
+                [pinPadEntryPinsKnockedDown[i] setUserInteractionEnabled:NO];
+            }
+        }
     }
     
     //Advance scrollView for score card to second half of the card if in frame 5 or greater
@@ -864,7 +929,8 @@
 #pragma mark - UIAlertView Delegate Methods
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
-    //NSLog(@"Callback Will!");
+    
+    //Handle saving no matter the selection of the user
     
     NSLog(@"%@", [NSString stringWithFormat:@"Alert Button Index: %ld", (long)buttonIndex]);
     
@@ -892,9 +958,13 @@
             
             NSLog(@"Game has been saved!");
             
+            //Define relation for session
             PFRelation* relatedGames = [_currentSession relationForKey:@"games"];
             
+            //Add game to relation for session
             [relatedGames addObject:newGame];
+            
+            //Save session
             [_currentSession saveInBackground];
             
         } else {
@@ -907,10 +977,11 @@
     
     
 
-    
+    //If create new game clicked
     if(buttonIndex != 0) {
         [self createNewGame];
     
+    //Else send user back to sessions view
     } else {
         [self performSegueWithIdentifier:@"returnToSessions" sender:nil];
     }
@@ -921,26 +992,35 @@
 
 }
 
+
+#pragma mark - UISegmentedControl Delegate Methods
+
 - (IBAction)scoringEntryOptionValueChanged:(UISegmentedControl *)sender {
     
     long index = sender.selectedSegmentIndex;
     
     if(index == 0) {
+        
         _userEntryKeyPad = [[BST_KeyPadEntryNib alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
         _userEntryKeyPad.delegate = self;
         //Add View to scoringEntry view
         [_scorePadEntryView addSubview: _userEntryKeyPad];
+        
+        //Turn isUsingPinPadEntry off
+        isUsingPinPadEntry = NO;
+        NSLog(@"_userEntryKeyPad On | _userEntryPinPad Off");
+        
     } else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Developer Warning!"
-                                                            message:@"This section is still under development and will not perform as expected."
-                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-        
-        
+
         _userEntryPinPad = [[BST_PinPadEntryNib alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
         _userEntryPinPad.delegate = self;
         //Add View to scoringEntry view
         [_scorePadEntryView addSubview: _userEntryPinPad];
+        
+        //Turn isUsingPinPadEntry
+        isUsingPinPadEntry = YES;
+        pinPadEntryPinsKnockedDown = [[NSMutableArray alloc] init];
+        NSLog(@"_userEntryKeyPad Off | _userEntryPinPad On");
     }
     
 }
@@ -955,6 +1035,5 @@
         
         [self nextThrow];
     }
-
 }
 @end
