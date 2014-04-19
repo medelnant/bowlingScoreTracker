@@ -442,9 +442,16 @@
             tempFrameTotal = tenthFrameThrow1 + tenthFrameThrow2 + tenthFrameThrow3;
             
             //If second throw in tenth frame is populated but not a strike, toggle the strike/spare button to spare.
-            if(tenthFrameThrow2 >= 1 && tenthFrameThrow2 != 10) {
+            if(tenthFrameThrow2 >= 1 && tenthFrameThrow2 != 10 && tempFrameTotal != 10) {
                 [_userEntryKeyPad.strikeSpareButton setTitle:@"/" forState:UIControlStateNormal];
                 [_userEntryPinPad.strikeSpareButton setTitle:@"/" forState:UIControlStateNormal];
+            }
+            
+            //Hack fix!!! - Issue with tenth frame handling that needs to be fixed after checking values for throws 1 & 2
+            //Todo: Revise this or move to nextThrow method and fix the real issue
+            if(tempFrameTotal >= 10) {
+                maxFrameThrowCount = 3;
+                frameThrowCount++;
             }
             
             //If third throw in tenth frame is populated - trigger end sequence
