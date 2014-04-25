@@ -199,6 +199,7 @@
         //Re-Enable pins from previous throw and removePins from pinPadEntryPinKnockedDown
         for (NSInteger i = 0; i < _userEntryPinPad.pins.count ; i++) {
             [_userEntryPinPad.pins[i] setUserInteractionEnabled:YES];
+            [_userEntryPinPad.pins[i] setAlpha:1];
             [pinPadEntryPinsKnockedDown removeAllObjects];
         }
         
@@ -323,6 +324,10 @@
     
     _frameStatusLabel.text  = @"Frame 1";
     _throwCountLabel.text   = @"";
+    
+    //Reset strike/spare button to strike in case spare was present for last frame in previous games tenth frame
+    [_userEntryKeyPad.strikeSpareButton setTitle:@"X" forState:UIControlStateNormal];
+    [_userEntryPinPad.strikeSpareButton setTitle:@"X" forState:UIControlStateNormal];
     
     [self updateScoreCard];
     
@@ -451,7 +456,7 @@
             //Todo: Revise this or move to nextThrow method and fix the real issue
             if(tempFrameTotal >= 10) {
                 maxFrameThrowCount = 3;
-                frameThrowCount++;
+                //frameThrowCount++;
             }
             
             //If third throw in tenth frame is populated - trigger end sequence
@@ -633,6 +638,13 @@
                 }
             }
             
+            //Add both throws together
+            if([throwCount isEqualToString:@"/"]) {
+                throwCount = [NSString stringWithFormat:@"%d", (10-tempThrow1)];
+                
+                //Set spare flag on frame
+                [_activeGameScoreArray[overallFrameCounter] setValue:@"true" forKey:@"isSpare"];
+            }
             
             //If total is equal to 10 then we have a spare
             if (tempCombinedThrow == 10) {
@@ -783,6 +795,7 @@
                     //Re-Enable pins from previous throw and removePins from pinPadEntryPinKnockedDown
                     for (NSInteger i = 0; i < _userEntryPinPad.pins.count ; i++) {
                         [_userEntryPinPad.pins[i] setUserInteractionEnabled:YES];
+                        [_userEntryPinPad.pins[i] setAlpha:1];
                         [pinPadEntryPinsKnockedDown removeAllObjects];
                     }
                 }
@@ -808,14 +821,18 @@
                 [_userEntryKeyPad.splitButton setEnabled:YES];
                 [_userEntryPinPad.splitButton setEnabled:YES];
                 
-                //Reset pin rack
-                for (NSInteger i = 0; i < _userEntryPinPad.pins.count; i++) {
-                    [_userEntryPinPad.pins[i] setSelected:NO];
-                }
-                
-                //Re-Enable pins from previous throw and removePins from pinPadEntryPinKnockedDown
-                for (NSInteger i = 0; i < _userEntryPinPad.pins.count ; i++) {
-                    [_userEntryPinPad.pins[i] setUserInteractionEnabled:YES];
+                if(isUsingPinPadEntry) {
+                    //Reset pin rack
+                    for (NSInteger i = 0; i < _userEntryPinPad.pins.count; i++) {
+                        [_userEntryPinPad.pins[i] setSelected:NO];
+                    }
+                    
+                    //Re-Enable pins from previous throw and removePins from pinPadEntryPinKnockedDown
+                    for (NSInteger i = 0; i < _userEntryPinPad.pins.count ; i++) {
+                        [_userEntryPinPad.pins[i] setUserInteractionEnabled:YES];
+                        [_userEntryPinPad.pins[i] setAlpha:1];
+                    }
+                    //Remove all pins from knocked down pin grouping
                     [pinPadEntryPinsKnockedDown removeAllObjects];
                 }
                 
@@ -834,6 +851,9 @@
                     tenthFrame = true;
                     
                     NSLog(@"Entering tenth frame!");
+                    NSLog(@"FrameThrowCount = %d", frameThrowCount);
+                    NSLog(@"MaxFrameThrowCount = %d", maxFrameThrowCount);
+                    NSLog(@"My Game Array = %@", _activeGameScoreArray);
                 } else {
                     
                     //Advance to next frame
@@ -877,6 +897,7 @@
             //Disable interaction with pins from first throw for second throw
             for (NSInteger i = 0; i < pinPadEntryPinsKnockedDown.count ; i++) {
                 [pinPadEntryPinsKnockedDown[i] setUserInteractionEnabled:NO];
+                [pinPadEntryPinsKnockedDown[i] setAlpha:0.5];
             }
         }
     }
