@@ -22,6 +22,7 @@
 
 //Define query and object for passing to other view controllers
 @property PFObject * createdSession;
+@property NSMutableDictionary * detailedSession;
 @property PFQuery *sessionQuery;
 
 //Add Session Method

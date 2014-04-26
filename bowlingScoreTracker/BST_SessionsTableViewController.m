@@ -11,6 +11,7 @@
 //
 
 #import "BST_SessionsTableViewController.h"
+#import "BST_SessionDetailViewController.h"
 #import "BST_VenueTableViewController.h"
 
 @interface BST_SessionsTableViewController ()
@@ -140,31 +141,11 @@
     
     //NSLog(@"%@", [NSString stringWithFormat:@"Session ObjectId : %@", [[_clientSideSessionArray objectAtIndex:indexPath.row] valueForKey:@"objectId"]]);
     
-    //Store objectId in pointer reference from clientSideSessionArray
-    NSString * sessionObjectId = [[_clientSideSessionArray objectAtIndex:indexPath.row] valueForKey:@"objectId"];
+    //Set the session that will be passed to detail view
+    _detailedSession = [_clientSideSessionArray objectAtIndex:indexPath.row];
     
-    //Define Query for retrieving specific PFObject
-    PFQuery *query = [PFQuery queryWithClassName:@"Session"];
-    [query whereKey:@"objectId" equalTo:sessionObjectId];
-    
-    //Perform Query
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        
-        if (!error) {
-            
-            //Set current session/created session to result from query
-            _createdSession = object;
-            
-            //Proceeed to game scoring view
-            [self performSegueWithIdentifier:@"gameScoring" sender:nil];
-            
-        } else {
-            
-            NSLog(@"Query Error for existing session in tableViewList");
-            
-        }
-        
-    }];
+    //Proceeed to game scoring view
+    [self performSegueWithIdentifier:@"sessionDetailView" sender:nil];
 }
 
 // Override to support editing the table view.
@@ -192,7 +173,7 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"venues"] || [segue.identifier isEqualToString:@"gameScoring"]) {
+    if([segue.identifier isEqualToString:@"venues"]) {
         
         BST_VenueTableViewController *destinationViewController = segue.destinationViewController;
         
@@ -202,7 +183,18 @@
             destinationViewController.currentSession = _createdSession;
             
         }
+    }
+    
+    if([segue.identifier isEqualToString:@"sessionDetailView"]) {
         
+        BST_SessionDetailViewController *destinationViewController = segue.destinationViewController;
+        
+        if(destinationViewController != nil) {
+            
+            //Pass Object to step 2: select bowling center
+            destinationViewController.detailedSession = _detailedSession;
+            
+        }
     }
 
 }
