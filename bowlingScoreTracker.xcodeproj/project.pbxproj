@@ -57,6 +57,9 @@
 		53E60E3A190078E800214176 /* pinButton_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E60E36190078E800214176 /* pinButton_on.png */; };
 		53E60E3B190078E800214176 /* pinButton_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E60E37190078E800214176 /* pinButton_off.png */; };
 		53E60E3C190078E800214176 /* pinButton_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E60E38190078E800214176 /* pinButton_off@2x.png */; };
+		53EF8D3C190B418000367731 /* BST_SessionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EF8D3B190B418000367731 /* BST_SessionDetailViewController.m */; };
+		53EF8D42190B557600367731 /* SessionDetailScoreCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53EF8D41190B557600367731 /* SessionDetailScoreCard.xib */; };
+		53EF8D45190B599E00367731 /* BST_SessionGameCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EF8D44190B599E00367731 /* BST_SessionGameCardTableViewCell.m */; };
 		53F5810918F217320098FE58 /* BST_UserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F5810818F217320098FE58 /* BST_UserSettingsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +140,11 @@
 		53E60E36190078E800214176 /* pinButton_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinButton_on.png; sourceTree = "<group>"; };
 		53E60E37190078E800214176 /* pinButton_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinButton_off.png; sourceTree = "<group>"; };
 		53E60E38190078E800214176 /* pinButton_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pinButton_off@2x.png"; sourceTree = "<group>"; };
+		53EF8D3A190B418000367731 /* BST_SessionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_SessionDetailViewController.h; sourceTree = "<group>"; };
+		53EF8D3B190B418000367731 /* BST_SessionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_SessionDetailViewController.m; sourceTree = "<group>"; };
+		53EF8D41190B557600367731 /* SessionDetailScoreCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SessionDetailScoreCard.xib; sourceTree = "<group>"; };
+		53EF8D43190B599E00367731 /* BST_SessionGameCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_SessionGameCardTableViewCell.h; sourceTree = "<group>"; };
+		53EF8D44190B599E00367731 /* BST_SessionGameCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_SessionGameCardTableViewCell.m; sourceTree = "<group>"; };
 		53F5810718F217320098FE58 /* BST_UserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST_UserSettingsViewController.h; sourceTree = "<group>"; };
 		53F5810818F217320098FE58 /* BST_UserSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BST_UserSettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,6 +202,7 @@
 				5345DBF118F9DA5A00DD9D45 /* GameScoreCard.xib */,
 				5345DC0218FA0C4800DD9D45 /* KeyPadEntry.xib */,
 				5345DC0C18FA1BC200DD9D45 /* PinPadEntry.xib */,
+				53EF8D41190B557600367731 /* SessionDetailScoreCard.xib */,
 			);
 			name = "NIB FIles";
 			sourceTree = "<group>";
@@ -211,6 +220,7 @@
 		5345DC0018F9FEF000DD9D45 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				53EF8D39190B416600367731 /* SessionDetailViewController */,
 				53670C4618F1AED90027F9EE /* LoginViewController */,
 				53670C4B18F1C3D00027F9EE /* LoggedInViewController */,
 				53670C4718F1AEE60027F9EE /* SignUpViewController */,
@@ -345,6 +355,7 @@
 				53670BEB18F171CD0027F9EE /* BST_AppDelegate.m */,
 				5345DBFF18F9FEC700DD9D45 /* Nibs */,
 				5345DC0018F9FEF000DD9D45 /* Views */,
+				53EF8D46190B59A400367731 /* Cells */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -444,6 +455,24 @@
 			name = temp_GameViewController;
 			sourceTree = "<group>";
 		};
+		53EF8D39190B416600367731 /* SessionDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53EF8D3A190B418000367731 /* BST_SessionDetailViewController.h */,
+				53EF8D3B190B418000367731 /* BST_SessionDetailViewController.m */,
+			);
+			name = SessionDetailViewController;
+			sourceTree = "<group>";
+		};
+		53EF8D46190B59A400367731 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				53EF8D43190B599E00367731 /* BST_SessionGameCardTableViewCell.h */,
+				53EF8D44190B599E00367731 /* BST_SessionGameCardTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		53F5810A18F217370098FE58 /* UserSettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,6 +564,7 @@
 				53E60E3C190078E800214176 /* pinButton_off@2x.png in Resources */,
 				53E60E3B190078E800214176 /* pinButton_off.png in Resources */,
 				5345DBF218F9DA5A00DD9D45 /* GameScoreCard.xib in Resources */,
+				53EF8D42190B557600367731 /* SessionDetailScoreCard.xib in Resources */,
 				53E60E39190078E800214176 /* pinButton_on@2x.png in Resources */,
 				53670BF418F171CD0027F9EE /* Images.xcassets in Resources */,
 				53A0D30B18F7781700E34117 /* launchPage.png in Resources */,
@@ -566,6 +596,7 @@
 				53670C4218F1AEC40027F9EE /* BST_LoginViewController.m in Sources */,
 				5345DBFE18F9EAC000DD9D45 /* BST_GameScoreCardNib.m in Sources */,
 				53CEF07C18F66587006B20DC /* BST_GameViewController.m in Sources */,
+				53EF8D45190B599E00367731 /* BST_SessionGameCardTableViewCell.m in Sources */,
 				53CEF07318F5F401006B20DC /* BST_SessionsTableViewController.m in Sources */,
 				53670C4A18F1C3CC0027F9EE /* BST_LoggedInViewController.m in Sources */,
 				53670BEC18F171CD0027F9EE /* BST_AppDelegate.m in Sources */,
@@ -576,6 +607,7 @@
 				5345DC1018FA1E3400DD9D45 /* BST_PinPadEntryNib.m in Sources */,
 				5345DBF918F9E0D300DD9D45 /* BST_GameScoringViewController.m in Sources */,
 				53670C1518F172300027F9EE /* SWRevealViewController.m in Sources */,
+				53EF8D3C190B418000367731 /* BST_SessionDetailViewController.m in Sources */,
 				53670C4518F1AED40027F9EE /* BST_SignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
