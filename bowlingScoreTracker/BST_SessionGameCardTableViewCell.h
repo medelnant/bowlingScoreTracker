@@ -15,6 +15,8 @@
 @property (strong, nonatomic) NSArray * frames;
 @property (strong, nonatomic) NSArray * frameTotals;
 
+//Summary Labels
+
 
 //Throws
 @property (weak, nonatomic) IBOutlet UILabel *throw_1;

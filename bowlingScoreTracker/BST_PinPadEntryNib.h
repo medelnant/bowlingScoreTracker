@@ -21,9 +21,15 @@
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (weak, nonatomic) IBOutlet UIButton *strikeSpareButton;
 @property (weak, nonatomic) IBOutlet UIButton *splitButton;
+@property (weak, nonatomic) IBOutlet UIButton *foulButton;
+@property (weak, nonatomic) IBOutlet UIButton *clearButton;
+
 
 //Pin Group
 @property (strong, nonatomic) NSArray * pins;
+
+//Button Group
+@property (strong, nonatomic) NSArray * buttons;
 
 //Pin Buttons
 @property (weak, nonatomic) IBOutlet UIButton *pinBtn_1;

@@ -31,7 +31,7 @@
     self.navigationItem.title = @"User Settings";
     
     //Add barButton left to trigger drawer slide open/close
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self.revealViewController action:@selector( revealToggle: )];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationMenuIcon.png"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector( revealToggle: )];
     
     //Add gesture recognizer to dismiss modal keyboard
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];

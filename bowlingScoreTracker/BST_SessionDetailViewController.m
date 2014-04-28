@@ -9,7 +9,18 @@
 #import "BST_SessionDetailViewController.h"
 #import "BST_SessionGameCardTableViewCell.h"
 
-@interface BST_SessionDetailViewController ()
+@interface BST_SessionDetailViewController () {
+
+    int totalThrowCount;
+    int strikeCount;
+    int nonStrikeCount;
+    int spareCount;
+    int singlePinLeaves;
+    int singlePinSpares;
+
+
+}
+
 
 @end
 
@@ -26,6 +37,25 @@
 
 - (void)viewDidLoad
 {
+    [self gatherReportData];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    //For some odd reason new to set contentInset for tableview to avoid overlap of navigationController
+    self.detailTableView.contentInset = UIEdgeInsetsMake(65.0f, 0.0f, 10.0f, 0.0f);
+    
+    //Styling
+    self.view.backgroundColor = [UIColor colorWithRed:0.92 green:0.91 blue:0.94 alpha:1];
+    
+    //Add gesture for swiping within navBar to trigger drawer slide open/close
+    [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    
+    //Set View Title
+    self.navigationItem.title = [NSString stringWithFormat:@"%@ Session", [_detailedSession valueForKey:@"title"]];
+    
+    //Add barButton left to trigger drawer slide open/close
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationMenuIcon.png"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector( revealToggle: )];
+    
 
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -99,6 +129,77 @@
     cell.gameTitle.text = gameTitle;
     
     return cell;
+}
+
+- (void) gatherReportData {
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSInteger gameCount = [_detailedSession[@"games"] count];
+        
+        //Loop through games
+        for (NSInteger i =0; i < gameCount; i++) {
+            
+            NSArray * gameArray = _detailedSession[@"games"][i][@"gameArray"];
+            
+            //Loop through frames
+            for (NSInteger j = 0; j < [gameArray count]; j++) {
+                
+                //Count total Strikes
+                if([[gameArray[j] valueForKey:@"isStrike"] isEqualToString:@"true"]) {
+                    strikeCount++;
+                } else {
+                    nonStrikeCount++;
+                }
+                
+                //TenthFrames
+                if(j == ([gameArray count] -1)) {
+                    
+                    int Throw1PlusThrow2 = [[gameArray[j] valueForKeyPath:@"throw1"] intValue] + [[gameArray[j] valueForKeyPath:@"throw2"] intValue];
+                    int Throw2PlusThrow3 = [[gameArray[j] valueForKeyPath:@"throw2"] intValue] + [[gameArray[j] valueForKeyPath:@"throw3"] intValue];
+                    
+                    //Throw 1
+                    if([[gameArray[j] valueForKeyPath:@"throw1"] isEqualToString:@"10"]) {
+                        strikeCount++;
+                    } else {
+                        nonStrikeCount++;
+                    }
+                    
+                    //Throw 2
+                    if([[gameArray[j] valueForKeyPath:@"throw2"] isEqualToString:@"10"]) {strikeCount++;}
+                    
+                    //Throw 3
+                    if([[gameArray[j] valueForKeyPath:@"throw3"] isEqualToString:@"10"]) {strikeCount++;}
+                    
+                    //Check for spares in either front half or back half of frame
+                    if(Throw1PlusThrow2 == 10) {spareCount++;}
+                    if(Throw2PlusThrow3 == 10) {spareCount++;}
+                    
+                }
+                
+                //Count total spares
+                if([[gameArray[j] valueForKey:@"isSpare"] isEqualToString:@"true"])  {spareCount++;}
+                
+                //Count single pin leaves
+                if([[gameArray[j] valueForKey:@"throw1"] isEqualToString:@"9"])  {singlePinLeaves++;}
+                
+                //Count single pin spares
+                if([[gameArray[j] valueForKey:@"throw1"] isEqualToString:@"9"] && [[gameArray[j] valueForKey:@"isSpare"] isEqualToString:@"true"])  {singlePinSpares++;}
+                
+            }
+            
+        }
+
+        
+        //Utilize main que because any UI Operations MUST be done on the main que
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            _summaryStrikeCount.text = [NSString stringWithFormat:@"%d strikes", strikeCount];
+            _summarySpareCount.text = [NSString stringWithFormat:@"%d spares out of %d", spareCount, nonStrikeCount];
+            _summarySinglePinSpares.text = [NSString stringWithFormat:@"%d single pin spares out of %d", singlePinSpares, singlePinLeaves];
+
+        });
+    });
 }
 
 /*

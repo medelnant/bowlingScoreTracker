@@ -65,6 +65,15 @@
 {
     [super viewDidLoad];
     
+    //Styling
+    [_frameStatusLabel setBackgroundColor:[UIColor colorWithRed:0.24 green:0.23 blue:0.33 alpha:1]];
+    [_frameStatusLabel setTextColor:[UIColor whiteColor]];
+    
+    //SegmentedControl Styling
+    _scoringEntrySegmentedControl.tintColor = [UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1];
+    [_scoringEntrySegmentedControl setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:0.49 green:0.52 blue:0.72 alpha:1]}forState:UIControlStateNormal];
+    [_scoringEntrySegmentedControl setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}forState:UIControlStateSelected];
+    
     //Set overallgamecount to zero to initialize
     overallGameCount = 0;
     
@@ -75,7 +84,7 @@
     self.navigationItem.title = [NSString stringWithFormat:@"%@ Game %d", [_currentSession valueForKey:@"title"], overallGameCount];
     
     //Add barButton left to trigger drawer slide open/close
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self.revealViewController action:@selector( revealToggle: )];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationMenuIcon.png"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector( revealToggle: )];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(debugGame)];
     
      _scoreCardView = [[BST_GameScoreCardNib alloc] initWithFrame:CGRectMake(0, 0, 670, 90)];
@@ -533,12 +542,12 @@
             }
             
             //Decode Foul
-            if ([frameThrowCount1 isEqualToString:@"F"]) {[_scoreCardView.frames[i][0] setTextColor:[UIColor redColor]];}
-            if ([frameThrowCount2 isEqualToString:@"F"]) {[_scoreCardView.frames[i][1] setTextColor:[UIColor redColor]];}
+            if ([frameThrowCount1 isEqualToString:@"F"]) {[_scoreCardView.frames[i][0] setTextColor:[UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1]];}
+            if ([frameThrowCount2 isEqualToString:@"F"]) {[_scoreCardView.frames[i][1] setTextColor:[UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1]];}
             
             
             //Handle split highlighting
-            if([[_activeGameScoreArray[i] valueForKey:@"isSplit"] isEqualToString:@"true"]) {[_scoreCardView.frames[i][0] setTextColor:[UIColor magentaColor]];}
+            if([[_activeGameScoreArray[i] valueForKey:@"isSplit"] isEqualToString:@"true"]) {[_scoreCardView.frames[i][0] setTextColor:[UIColor colorWithRed:0.49 green:0.51 blue:0.76 alpha:1]];}
             
             [_scoreCardView.frames[i][0] setText:frameThrowCount1];
             [_scoreCardView.frames[i][1] setText:frameThrowCount2];
@@ -555,9 +564,9 @@
     //Clear throws
     for (i=0; i <= 9; i++) {
         [_scoreCardView.frames[i][0] setText:@""];
-        [_scoreCardView.frames[i][0] setTextColor:[UIColor blackColor]];
+        [_scoreCardView.frames[i][0] setTextColor:[UIColor colorWithRed:0.35 green:0.35 blue:0.38 alpha:1]];
         [_scoreCardView.frames[i][1] setText:@""];
-        [_scoreCardView.frames[i][1] setTextColor:[UIColor blackColor]];
+        [_scoreCardView.frames[i][1] setTextColor:[UIColor colorWithRed:0.35 green:0.35 blue:0.38 alpha:1]];
     };
     
     //Clear frame totals
@@ -565,8 +574,12 @@
         [_scoreCardView.frameTotals[i] setText:@""];
     };
     
-    [_scoreCardView.frameLabels[9] setBackgroundColor:[UIColor lightGrayColor]];
-    [_scoreCardView.frameLabels[0] setBackgroundColor:[UIColor darkGrayColor]];
+    for(i=0; i < [_scoreCardView.frameLabels count]; i++) {
+        [_scoreCardView.frameLabels[i] setBackgroundColor:[UIColor colorWithRed:0.24 green:0.23 blue:0.33 alpha:1]];
+    }
+    
+    //Set first frame to be highlighted
+    [_scoreCardView.frameLabels[0] setBackgroundColor:[UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1]];
     [_scoreCardScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     
 }
@@ -730,6 +743,7 @@
             [_userEntryKeyPad.splitButton setEnabled:YES];
             [_userEntryPinPad.splitButton setEnabled:YES];
             
+            
             // If second throw causes frame total to exceed 10 stop and alert
             if ([_throwCountLabel.text intValue] > (10 - firstFramePinCount) && overallFrameCounter < (_activeGameScoreArray.count-1)) {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
@@ -755,7 +769,7 @@
                 firstFramePinCount = 0;
                 
                 //Reset appropriate frame label to light gray color
-                [_scoreCardView.frameLabels[overallFrameCounter] setBackgroundColor:[UIColor lightGrayColor]];
+                [_scoreCardView.frameLabels[overallFrameCounter] setBackgroundColor:[UIColor colorWithRed:0.24 green:0.23 blue:0.33 alpha:1]];
                 
                 //If tenth frame
                 if(overallFrameCounter == (_activeGameScoreArray.count-1)) {
@@ -768,7 +782,7 @@
                     }
                     
                     //HightLight current frame
-                    [_scoreCardView.frameLabels[overallFrameCounter] setBackgroundColor:[UIColor darkGrayColor]];
+                    [_scoreCardView.frameLabels[overallFrameCounter] setBackgroundColor:[UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1]];
                     
                 } else {
                     
@@ -779,7 +793,7 @@
                     frameThrowCount = 1;
                     
                     //HightLight next frame
-                    [_scoreCardView.frameLabels[overallFrameCounter] setBackgroundColor:[UIColor darkGrayColor]];
+                    [_scoreCardView.frameLabels[overallFrameCounter] setBackgroundColor:[UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1]];
                     
                 }
                 
@@ -867,10 +881,10 @@
                 _frameStatusLabel.text = [NSString stringWithFormat:@"Frame %d", (overallFrameCounter+1)];
 
                 //Reset appropriate frame label to light gray color
-                [_scoreCardView.frameLabels[overallFrameCounter-1] setBackgroundColor:[UIColor lightGrayColor]];
+                [_scoreCardView.frameLabels[overallFrameCounter-1] setBackgroundColor:[UIColor colorWithRed:0.24 green:0.23 blue:0.33 alpha:1]];
                 
                 //HightLight next frame
-                [_scoreCardView.frameLabels[overallFrameCounter] setBackgroundColor:[UIColor darkGrayColor]];
+                [_scoreCardView.frameLabels[overallFrameCounter] setBackgroundColor:[UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1]];
                 
             } else {
                 

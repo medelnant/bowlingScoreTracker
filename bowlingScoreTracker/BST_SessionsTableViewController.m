@@ -32,9 +32,35 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    //Show NavigationBar
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //Styling
+    [self.view setBackgroundColor: [UIColor colorWithRed:0.84 green:0.83 blue:0.85 alpha:1]];
+    
+    //Style Navigation Bar
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0.14 green:0.14 blue:0.21 alpha:1]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1]}];
+    
+    //Add Border to NavigationBar
+    [[self.navigationController.navigationBar viewWithTag:55] removeFromSuperview];
+    UIView *navBorder = [[UIView alloc] initWithFrame:CGRectMake(0,self.navigationController.navigationBar.frame.size.height-4,self.navigationController.navigationBar.frame.size.width, 2)];
+    navBorder.tag = 66;
+    [navBorder setBackgroundColor:[UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1]];
+    [navBorder setOpaque:YES];
+    [self.navigationController.navigationBar addSubview:navBorder];
+    
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1];
+    self.navigationController.navigationBar.translucent = YES;
+    
     
     //Add gesture for swiping within navBar to trigger drawer slide open/close
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
@@ -43,7 +69,7 @@
     self.navigationItem.title = @"Sessions";
     
     //Add barButton left to trigger drawer slide open/close
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self.revealViewController action:@selector( revealToggle: )];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationMenuIcon.png"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector( revealToggle: )];
     
     //Add barButton right to trigger drawer slide open/close
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addSession)];
@@ -72,6 +98,7 @@
         //Utilize main que because any UI Operations MUST be done on the main que
         dispatch_async(dispatch_get_main_queue(), ^{
             _clientSideSessionArray = [NSMutableArray arrayWithArray:sessions];
+            NSLog(@"%@", _clientSideSessionArray);
             [[self tableView] reloadData];
         });
     });
@@ -81,6 +108,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -132,6 +161,7 @@
     cell.textLabel.text = sessionTitle;
     cell.detailTextLabel.text = sessionRecap;
     cell.detailTextLabel.textColor = [UIColor darkGrayColor];
+    cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
@@ -145,7 +175,7 @@
     _detailedSession = [_clientSideSessionArray objectAtIndex:indexPath.row];
     
     //Proceeed to game scoring view
-    [self performSegueWithIdentifier:@"sessionDetailView" sender:nil];
+    [self performSegueWithIdentifier:@"gameScoring" sender:nil];
 }
 
 // Override to support editing the table view.
@@ -173,7 +203,7 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"venues"]) {
+    if([segue.identifier isEqualToString:@"venues"] || [segue.identifier isEqualToString:@"gameScoring"]) {
         
         BST_VenueTableViewController *destinationViewController = segue.destinationViewController;
         

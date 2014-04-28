@@ -18,11 +18,28 @@
 
 @interface BST_KeyPadEntryNib : UIView
 
-@property (strong, nonatomic) NSArray * keyPadButton;
+@property (strong, nonatomic) NSArray * keyPadButtons;
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (weak, nonatomic) IBOutlet UIButton *strikeSpareButton;
 @property (weak, nonatomic) IBOutlet UIButton *splitButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *clearButton;
+@property (weak, nonatomic) IBOutlet UIButton *foulButton;
+@property (weak, nonatomic) IBOutlet UIButton *zeroButton;
+@property (weak, nonatomic) IBOutlet UIButton *oneButton;
+@property (weak, nonatomic) IBOutlet UIButton *twoButton;
+@property (weak, nonatomic) IBOutlet UIButton *threeButton;
+@property (weak, nonatomic) IBOutlet UIButton *fourButton;
+@property (weak, nonatomic) IBOutlet UIButton *fiveButton;
+@property (weak, nonatomic) IBOutlet UIButton *sixButton;
+@property (weak, nonatomic) IBOutlet UIButton *sevenButton;
+@property (weak, nonatomic) IBOutlet UIButton *eightButton;
+@property (weak, nonatomic) IBOutlet UIButton *nineButton;
+
+
+
+
 
 
 @property (strong, nonatomic) id <KeyPadEntryViewDelegate> delegate;

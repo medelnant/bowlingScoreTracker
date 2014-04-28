@@ -34,36 +34,59 @@
                   /*Pin 9*/     _pinBtn_9,
                   /*Pin 10*/    _pinBtn_10];
         
+        _buttons = @[_splitButton,
+                     _clearButton,
+                     _foulButton,
+                     _strikeSpareButton];
+        
+        //Set Styles for buttons
+        for (NSInteger i = 0; i<_buttons.count; i++) {
+            [_buttons[i] setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
+            [_buttons[i] setTitleColor:[UIColor colorWithRed:0.24 green:0.23 blue:0.33 alpha:1] forState:UIControlStateNormal];
+            [_buttons[i] setTitleColor:[UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1] forState:UIControlStateHighlighted];
+            [_buttons[i] setTitleColor:[UIColor colorWithRed:0.84 green:0.83 blue:0.85 alpha:1] forState:UIControlStateDisabled];
+            [_buttons[i] setTitleShadowColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:.5] forState:UIControlStateNormal];
+            [[_buttons[i] layer] setBorderWidth:2.0f];
+            [[_buttons[i] layer] setBorderColor:[UIColor colorWithRed:0.93 green:0.93 blue:0.93 alpha:.15].CGColor];
+            
+            if([_buttons[i] isSelected]) {
+                [[_buttons[i] layer] setBorderColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1].CGColor];
+            }
+        }
+        
+        
+        
+        
         //Set Pin Default Text Colors and Background Image
         [_pins[0] setBackgroundImage:[UIImage imageNamed:@"pinButton_off.png" ] forState:UIControlStateNormal];
-        [_pins[0] setTitleColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1] forState:UIControlStateNormal];
+        [_pins[0] setTitleColor:[UIColor colorWithRed:0.39 green:0.38 blue:0.49 alpha:1] forState:UIControlStateNormal];
         
         [_pins[1] setBackgroundImage:[UIImage imageNamed:@"pinButton_off.png" ] forState:UIControlStateNormal];
-        [_pins[1] setTitleColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1] forState:UIControlStateNormal];
+        [_pins[1] setTitleColor:[UIColor colorWithRed:0.39 green:0.38 blue:0.49 alpha:1] forState:UIControlStateNormal];
         
         [_pins[2] setBackgroundImage:[UIImage imageNamed:@"pinButton_off.png" ] forState:UIControlStateNormal];
-        [_pins[2] setTitleColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1] forState:UIControlStateNormal];
+        [_pins[2] setTitleColor:[UIColor colorWithRed:0.39 green:0.38 blue:0.49 alpha:1] forState:UIControlStateNormal];
         
         [_pins[3] setBackgroundImage:[UIImage imageNamed:@"pinButton_off.png" ] forState:UIControlStateNormal];
-        [_pins[3] setTitleColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1] forState:UIControlStateNormal];
+        [_pins[3] setTitleColor:[UIColor colorWithRed:0.39 green:0.38 blue:0.49 alpha:1] forState:UIControlStateNormal];
         
         [_pins[4] setBackgroundImage:[UIImage imageNamed:@"pinButton_off.png" ] forState:UIControlStateNormal];
-        [_pins[4] setTitleColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1] forState:UIControlStateNormal];
+        [_pins[4] setTitleColor:[UIColor colorWithRed:0.39 green:0.38 blue:0.49 alpha:1] forState:UIControlStateNormal];
         
         [_pins[5] setBackgroundImage:[UIImage imageNamed:@"pinButton_off.png" ] forState:UIControlStateNormal];
-        [_pins[5] setTitleColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1] forState:UIControlStateNormal];
+        [_pins[5] setTitleColor:[UIColor colorWithRed:0.39 green:0.38 blue:0.49 alpha:1] forState:UIControlStateNormal];
         
         [_pins[6] setBackgroundImage:[UIImage imageNamed:@"pinButton_off.png" ] forState:UIControlStateNormal];
-        [_pins[6] setTitleColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1] forState:UIControlStateNormal];
+        [_pins[6] setTitleColor:[UIColor colorWithRed:0.39 green:0.38 blue:0.49 alpha:1] forState:UIControlStateNormal];
         
         [_pins[7] setBackgroundImage:[UIImage imageNamed:@"pinButton_off.png" ] forState:UIControlStateNormal];
-        [_pins[7] setTitleColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1] forState:UIControlStateNormal];
+        [_pins[7] setTitleColor:[UIColor colorWithRed:0.39 green:0.38 blue:0.49 alpha:1] forState:UIControlStateNormal];
         
         [_pins[8] setBackgroundImage:[UIImage imageNamed:@"pinButton_off.png" ] forState:UIControlStateNormal];
-        [_pins[8] setTitleColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1] forState:UIControlStateNormal];
+        [_pins[8] setTitleColor:[UIColor colorWithRed:0.39 green:0.38 blue:0.49 alpha:1] forState:UIControlStateNormal];
         
         [_pins[9] setBackgroundImage:[UIImage imageNamed:@"pinButton_off.png" ] forState:UIControlStateNormal];
-        [_pins[9] setTitleColor:[UIColor colorWithRed:0 green:0.48 blue:1 alpha:1] forState:UIControlStateNormal];
+        [_pins[9] setTitleColor:[UIColor colorWithRed:0.39 green:0.38 blue:0.49 alpha:1] forState:UIControlStateNormal];
         
         //Set Pin Select Text Colors and Background Image
         [_pins[0] setBackgroundImage:[UIImage imageNamed:@"pinButton_on.png" ] forState:UIControlStateSelected];

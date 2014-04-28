@@ -23,6 +23,55 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    //Styling
+    self.view.backgroundColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.21 alpha:1];
+    
+    //Set Placeholder color to UITextFields
+    _username.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.31 green:0.3 blue:0.43 alpha:1]}];
+    _email.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email Address" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.31 green:0.3 blue:0.43 alpha:1]}];
+    _firstName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"First Name" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.31 green:0.3 blue:0.43 alpha:1]}];
+    _lastName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Last Name" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.31 green:0.3 blue:0.43 alpha:1]}];
+    _password.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.31 green:0.3 blue:0.43 alpha:1]}];
+    
+    //UserName Field
+    _username.layer.borderWidth = 0.0f;
+    _username.layer.masksToBounds = YES;
+    _username.layer.backgroundColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5f]CGColor];
+    _username.textColor = [UIColor colorWithRed:0.15 green:0.63 blue:0.51 alpha:1];
+    
+    //Email Field
+    _email.layer.borderWidth = 0.0f;
+    _email.layer.masksToBounds = YES;
+    _email.layer.backgroundColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5f]CGColor];
+    _email.textColor = [UIColor colorWithRed:0.15 green:0.63 blue:0.51 alpha:1];
+    
+    //First Name Field
+    _firstName.layer.borderWidth = 0.0f;
+    _firstName.layer.masksToBounds = YES;
+    _firstName.layer.backgroundColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5f]CGColor];
+    _firstName.textColor = [UIColor colorWithRed:0.15 green:0.63 blue:0.51 alpha:1];
+    
+    //Last Name Field
+    _lastName.layer.borderWidth = 0.0f;
+    _lastName.layer.masksToBounds = YES;
+    _lastName.layer.backgroundColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5f]CGColor];
+    _lastName.textColor = [UIColor colorWithRed:0.15 green:0.63 blue:0.51 alpha:1];
+    
+    //Password Field
+    _password.layer.borderWidth = 0.0f;
+    _password.layer.masksToBounds = YES;
+    _password.layer.backgroundColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5f]CGColor];
+    _password.textColor = [UIColor colorWithRed:0.15 green:0.63 blue:0.51 alpha:1];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
+    
+    _handedNess.layer.masksToBounds = YES;
+    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:0.31 green:0.3 blue:0.43 alpha:1]} forState:UIControlStateNormal];
+    
+    
     //Add gesture recognizer to dismiss modal keyboard
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
     [singleTap setNumberOfTapsRequired:1];

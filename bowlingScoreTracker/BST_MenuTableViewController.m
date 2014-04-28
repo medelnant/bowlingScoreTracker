@@ -23,6 +23,9 @@
 {
     [super viewDidLoad];
     
+    //Styling
+    self.view.backgroundColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.21 alpha:1];
+    
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
     

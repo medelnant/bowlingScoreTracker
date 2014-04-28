@@ -20,6 +20,7 @@
 // Define UI Properties
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
+@property (weak, nonatomic) IBOutlet UIButton *createAccountButton;
 
 // Define IBActions
 - (IBAction)forgotPassword:(id)sender;

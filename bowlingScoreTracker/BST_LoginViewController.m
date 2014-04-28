@@ -11,6 +11,7 @@
 //
 
 #import "BST_LoginViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface BST_LoginViewController ()
@@ -36,6 +37,46 @@
     if (currentUser) {
         [self performSegueWithIdentifier:@"loggedIn" sender:nil];
     }
+    
+    //Styling
+    self.view.backgroundColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.21 alpha:1];
+    
+    //Set Placeholder color to UITextFields
+    _username.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.31 green:0.3 blue:0.43 alpha:1]}];
+    _password.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.31 green:0.3 blue:0.43 alpha:1]}];
+    
+    //UserName Field
+    _username.layer.borderWidth = 0.0f;
+    _username.layer.masksToBounds = YES;
+    _username.layer.backgroundColor = [[UIColor uiTextfieldBackground]CGColor];
+    _username.textColor = [UIColor colorWithRed:0.84 green:0.83 blue:0.85 alpha:1];
+    
+    //Password Field
+    _password.layer.borderWidth = 0.0f;
+    _password.layer.masksToBounds = YES;
+    _password.layer.backgroundColor = [[UIColor uiTextfieldBackground] CGColor];
+    _password.textColor = [UIColor colorWithRed:0.84 green:0.83 blue:0.85 alpha:1];
+    
+    //Set NavigationController Colors
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1]}];
+    
+    _createAccountButton.layer.borderWidth = 1.0f;
+    _createAccountButton.layer.masksToBounds = YES;
+    _createAccountButton.layer.borderColor = [[UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1] CGColor];
+    
+    [[self.navigationController.navigationBar viewWithTag:66] removeFromSuperview];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1];
+    
+    //Add Bottom Border to NavigationBar
+    UIView *navBorder = [[UIView alloc] initWithFrame:CGRectMake(0,self.navigationController.navigationBar.frame.size.height-2,self.navigationController.navigationBar.frame.size.width, 2)];
+    navBorder.tag = 55;
+    [navBorder setBackgroundColor:[UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1]];
+    [navBorder setOpaque:YES];
+    [self.navigationController.navigationBar addSubview:navBorder];
 
 }
 
@@ -123,6 +164,11 @@
     {
         //BST_LoggedInViewController *dvc = [segue destinationViewController];
     }
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 @end
