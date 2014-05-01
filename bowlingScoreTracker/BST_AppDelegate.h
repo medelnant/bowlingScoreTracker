@@ -2,11 +2,7 @@
 //  BST_AppDelegate.h
 //  bowlingScoreTracker
 //
-//  ADP 1 | Week 3 | Term 1404
-//  Michael Edelnant
-//  Instructor: Lyndon Modomo
-//
-//  ADP 1 | Week 3 | Term 1404
+//  ADP 1 | Week 4 | Term 1404
 //  Michael Edelnant
 //  Instructor: Lyndon Modomo
 //

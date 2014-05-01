@@ -2,7 +2,7 @@
 //  BST_UserSettingsViewController.m
 //  bowlingScoreTracker
 //
-//  ADP 1 | Week 3 | Term 1404
+//  ADP 1 | Week 4 | Term 1404
 //  Michael Edelnant
 //  Instructor: Lyndon Modomo
 //
@@ -11,6 +11,7 @@
 //
 
 #import "BST_UserSettingsViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface BST_UserSettingsViewController ()
 
@@ -23,6 +24,73 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
+    
+    //Styling
+    [self.view setBackgroundColor: [UIColor colorWithRed:0.84 green:0.83 blue:0.85 alpha:1]];
+    
+    
+    //UserName Field
+    _username.backgroundColor = [UIColor clearColor];
+    _username.layer.borderWidth = 1.0f;
+    _username.layer.cornerRadius = 0.0f;
+    _username.layer.borderColor = [[UIColor colorWithRed:0.21 green:0.2 blue:0.27 alpha:0.5]CGColor];
+    _username.layer.masksToBounds = YES;
+    _username.layer.backgroundColor = [[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5f]CGColor];
+    _username.textColor = [UIColor colorWithRed:0.21 green:0.2 blue:0.27 alpha:1];
+    
+    //Email Field
+    _email.backgroundColor = [UIColor clearColor];
+    _email.layer.borderWidth = 1.0f;
+    _email.layer.cornerRadius = 0.0f;
+    _email.layer.borderColor = [[UIColor colorWithRed:0.21 green:0.2 blue:0.27 alpha:0.5]CGColor];
+    _email.layer.masksToBounds = YES;
+    _email.layer.backgroundColor = [[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5f]CGColor];
+    _email.textColor = [UIColor colorWithRed:0.21 green:0.2 blue:0.27 alpha:1];
+    
+    //First Name Field
+    _firstName.backgroundColor = [UIColor clearColor];
+    _firstName.layer.borderWidth = 1.0f;
+    _firstName.layer.cornerRadius = 0.0f;
+    _firstName.layer.borderColor = [[UIColor colorWithRed:0.21 green:0.2 blue:0.27 alpha:0.5]CGColor];
+    _firstName.layer.masksToBounds = YES;
+    _firstName.layer.backgroundColor = [[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5f]CGColor];
+    _firstName.textColor = [UIColor colorWithRed:0.21 green:0.2 blue:0.27 alpha:1];
+    
+    //Last Name Field
+    _lastName.backgroundColor = [UIColor clearColor];
+    _lastName.layer.borderWidth = 1.0f;
+    _lastName.layer.cornerRadius = 0.0f;
+    _lastName.layer.borderColor = [[UIColor colorWithRed:0.21 green:0.2 blue:0.27 alpha:0.5]CGColor];
+    _lastName.layer.masksToBounds = YES;
+    _lastName.layer.backgroundColor = [[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5f]CGColor];
+    _lastName.textColor = [UIColor colorWithRed:0.21 green:0.2 blue:0.27 alpha:1];
+    
+    //Password Field
+    _password.backgroundColor = [UIColor clearColor];
+    _password.layer.borderWidth = 1.0f;
+    _password.layer.cornerRadius = 0.0f;
+    _password.layer.borderColor = [[UIColor colorWithRed:0.21 green:0.2 blue:0.27 alpha:0.5]CGColor];
+    _password.layer.masksToBounds = YES;
+    _password.layer.backgroundColor = [[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5f]CGColor];
+    _password.textColor = [UIColor colorWithRed:0.21 green:0.2 blue:0.27 alpha:1];
+    
+    
+    //Style Navigation Bar
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0.14 green:0.14 blue:0.21 alpha:1]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1]}];
+    
+    //Add Border to NavigationBar
+    [[self.navigationController.navigationBar viewWithTag:55] removeFromSuperview];
+    UIView *navBorder = [[UIView alloc] initWithFrame:CGRectMake(0,self.navigationController.navigationBar.frame.size.height-4,self.navigationController.navigationBar.frame.size.width, 2)];
+    navBorder.tag = 66;
+    [navBorder setBackgroundColor:[UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1]];
+    [navBorder setOpaque:YES];
+    [self.navigationController.navigationBar addSubview:navBorder];
+    
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1];
+    self.navigationController.navigationBar.translucent = YES;
     
     //Add gesture for swiping within navBar to trigger drawer slide open/close
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];

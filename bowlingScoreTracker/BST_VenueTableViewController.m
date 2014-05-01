@@ -2,7 +2,7 @@
 //  BST_VenueTableViewController.m
 //  bowlingScoreTracker
 //
-//  ADP 1 | Week 3 | Term 1404
+//  ADP 1 | Week 4 | Term 1404
 //  Michael Edelnant
 //  Instructor: Lyndon Modomo
 //
@@ -12,6 +12,7 @@
 
 #import "BST_VenueTableViewController.h"
 #import "BST_GameViewController.h"
+#import "BST_VenueCardTableViewCell.h"
 
 @interface BST_VenueTableViewController ()
 
@@ -35,6 +36,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //Styling
+    [self.view setBackgroundColor: [UIColor colorWithRed:0.84 green:0.83 blue:0.85 alpha:1]];
     
     //Set View Title
     self.navigationItem.title = @"Choose Bowling Center";
@@ -157,9 +161,10 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (BST_VenueCardTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"venueCell"];
+    
+    BST_VenueCardTableViewCell *cell = (BST_VenueCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"venueCell"];
     
     NSString * bowlingCenterName        = [[venueArray objectAtIndex:indexPath.row]valueForKey:@"name"];
     NSString * bowlingCenterLocation    = [[venueArray objectAtIndex:indexPath.row]valueForKey:@"vicinity"];
@@ -169,8 +174,8 @@
     NSString * bowlingCenterLocationString  = [NSString stringWithFormat:@"%@", [tempLocationArray objectAtIndex:1]];
     
     // Configure the cell...
-    cell.textLabel.text = bowlingCenterName;
-    cell.detailTextLabel.text = bowlingCenterLocationString;
+    cell.venueName.text = bowlingCenterName;
+    cell.venueLocation.text = bowlingCenterLocationString;
     
     return cell;
 }

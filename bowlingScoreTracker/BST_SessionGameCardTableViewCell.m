@@ -2,6 +2,10 @@
 //  BST_SessionGameCardTableViewCell.m
 //  bowlingScoreTracker
 //
+//  ADP 1 | Week 4 | Term 1404
+//  Michael Edelnant
+//  Instructor: Lyndon Modomo
+//
 //  Created by vAesthetic on 4/25/14.
 //  Copyright (c) 2014 medelnant. All rights reserved.
 //
@@ -22,6 +26,9 @@
 - (void)awakeFromNib
 {
     // Initialization code
+    
+    //Needed to use awakeFromNib method since we are dynamically loading an XIB into the cell
+    
     //Define throw label grouping
     _frames = @[ /*Frame 1*/   @[_throw_1,   _throw_2],
                                /*Frame 2*/   @[_throw_3,   _throw_4],

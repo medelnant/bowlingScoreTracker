@@ -2,7 +2,7 @@
 //  BST_SessionsTableViewController.m
 //  bowlingScoreTracker
 //
-//  ADP 1 | Week 3 | Term 1404
+//  ADP 1 | Week 4 | Term 1404
 //  Michael Edelnant
 //  Instructor: Lyndon Modomo
 //
@@ -13,6 +13,7 @@
 #import "BST_SessionsTableViewController.h"
 #import "BST_SessionDetailViewController.h"
 #import "BST_VenueTableViewController.h"
+#import "BST_SessionCardTableViewCell.h"
 
 @interface BST_SessionsTableViewController ()
 
@@ -98,7 +99,7 @@
         //Utilize main que because any UI Operations MUST be done on the main que
         dispatch_async(dispatch_get_main_queue(), ^{
             _clientSideSessionArray = [NSMutableArray arrayWithArray:sessions];
-            NSLog(@"%@", _clientSideSessionArray);
+            
             [[self tableView] reloadData];
         });
     });
@@ -133,35 +134,53 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (BST_SessionCardTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     //Create array instance of just the games for this session
     NSArray * sessionGamesArray = [_clientSideSessionArray[indexPath.row] valueForKey:@"games"];
     
+    
+    
     //Pointer for holding total series
-    int sessionTotalSeries;
+    int sessionTotalSeries = 0;
     
     //Total up series for session
     for (NSInteger i = 0; i < sessionGamesArray.count; i++) {
         sessionTotalSeries += [[sessionGamesArray[i] valueForKey:@"totalScore"] intValue];
     }
     
+    NSLog(@"Total Series is = %d", sessionTotalSeries);
+    
     //Do the math to determine average
     int sessionAverage = sessionTotalSeries/sessionGamesArray.count;
-                                          
     
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"sessionCell"];
+    NSString * sessionLocation = [NSString stringWithFormat:@"%@, %@", [_clientSideSessionArray[indexPath.row] valueForKey:@"venueName"], [_clientSideSessionArray[indexPath.row] valueForKey:@"city"]];
+    
+    //Session Date
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MMMM dd, yyyy"];
+    NSString *sessionDate = [dateFormatter stringFromDate:[_clientSideSessionArray[indexPath.row] valueForKey:@"createdAt"]];
+    
+    BST_SessionCardTableViewCell *cell = (BST_SessionCardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"sessionCell"];
     
     //Store title and creationDate within NSString pointer references
     NSString * sessionTitle = [[_clientSideSessionArray objectAtIndex:indexPath.row] valueForKey:@"title"];
-    NSString * sessionRecap = [NSString stringWithFormat:@"%ld games | %d series | %d average", sessionGamesArray.count, sessionTotalSeries, sessionAverage];
+    //NSString * sessionRecap = [NSString stringWithFormat:@"%ld games | %d series | %d average", sessionGamesArray.count, sessionTotalSeries, sessionAverage];
     
     //Write values to appropriate labels within cell
-    cell.textLabel.text = sessionTitle;
-    cell.detailTextLabel.text = sessionRecap;
-    cell.detailTextLabel.textColor = [UIColor darkGrayColor];
-    cell.backgroundColor = [UIColor clearColor];
+    
+    cell.sessionTitle.text = sessionTitle;
+    cell.sessionDate.text = sessionDate;
+    cell.sessionVenue.text = sessionLocation;
+    cell.sessionNumberOfGames.text = [NSString stringWithFormat:@"%lu", (unsigned long)sessionGamesArray.count];
+    cell.sessionSeries.text = [NSString stringWithFormat:@"%d", sessionTotalSeries];
+    cell.sessionAverage.text = [NSString stringWithFormat:@"%d", sessionAverage];
+    
+    //cell.textLabel.text = sessionTitle;
+    //cell.detailTextLabel.text = sessionRecap;
+    //cell.detailTextLabel.textColor = [UIColor darkGrayColor];
+    //cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
@@ -175,7 +194,7 @@
     _detailedSession = [_clientSideSessionArray objectAtIndex:indexPath.row];
     
     //Proceeed to game scoring view
-    [self performSegueWithIdentifier:@"gameScoring" sender:nil];
+    [self performSegueWithIdentifier:@"sessionDetailView" sender:nil];
 }
 
 // Override to support editing the table view.

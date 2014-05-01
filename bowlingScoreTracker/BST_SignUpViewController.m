@@ -2,7 +2,7 @@
 //  BST_SignUpViewController.m
 //  bowlingScoreTracker
 //
-//  ADP 1 | Week 3 | Term 1404
+//  ADP 1 | Week 4 | Term 1404
 //  Michael Edelnant
 //  Instructor: Lyndon Modomo
 //
@@ -11,6 +11,7 @@
 //
 
 #import "BST_SignUpViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface BST_SignUpViewController ()
 

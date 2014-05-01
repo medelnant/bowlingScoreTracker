@@ -2,6 +2,10 @@
 //  BST_SessionDetailViewController.m
 //  bowlingScoreTracker
 //
+//  ADP 1 | Week 4 | Term 1404
+//  Michael Edelnant
+//  Instructor: Lyndon Modomo
+//
 //  Created by vAesthetic on 4/25/14.
 //  Copyright (c) 2014 medelnant. All rights reserved.
 //
@@ -37,8 +41,10 @@
 
 - (void)viewDidLoad
 {
+    //Call gatherReportData at the start (Uses GCD to process on separate thread)
     [self gatherReportData];
     
+    //Necessary to fix issues with tableView offset/inset
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     //For some odd reason new to set contentInset for tableview to avoid overlap of navigationController
@@ -137,10 +143,16 @@
         
         NSInteger gameCount = [_detailedSession[@"games"] count];
         
+        int totalSeries = 0;
+        
         //Loop through games
         for (NSInteger i =0; i < gameCount; i++) {
             
             NSArray * gameArray = _detailedSession[@"games"][i][@"gameArray"];
+            
+            totalSeries = totalSeries + [[_detailedSession[@"games"][i] valueForKey:@"totalScore"] intValue];
+            NSLog(@"My Game Array %@", [_detailedSession[@"games"][i] valueForKey:@"totalScore"]);
+            
             
             //Loop through frames
             for (NSInteger j = 0; j < [gameArray count]; j++) {
@@ -194,6 +206,8 @@
         //Utilize main que because any UI Operations MUST be done on the main que
         dispatch_async(dispatch_get_main_queue(), ^{
             
+            _totalAverage.text  = [NSString stringWithFormat:@"%ld", (totalSeries/gameCount)];
+            _totalSeries.text = [NSString stringWithFormat:@"%d", totalSeries];
             _summaryStrikeCount.text = [NSString stringWithFormat:@"%d strikes", strikeCount];
             _summarySpareCount.text = [NSString stringWithFormat:@"%d spares out of %d", spareCount, nonStrikeCount];
             _summarySinglePinSpares.text = [NSString stringWithFormat:@"%d single pin spares out of %d", singlePinSpares, singlePinLeaves];

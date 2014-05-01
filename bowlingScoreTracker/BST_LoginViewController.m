@@ -2,7 +2,7 @@
 //  BST_LoginViewController.m
 //  bowlingScoreTracker
 //
-//  ADP 1 | Week 3 | Term 1404
+//  ADP 1 | Week 4 | Term 1404
 //  Michael Edelnant
 //  Instructor: Lyndon Modomo
 //
@@ -90,7 +90,12 @@
 
 
 - (IBAction)forgotPassword:(id)sender {
-    NSLog(@"Forgot Password Clicked!");
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Forgot Password"
+                                                        message:@"Please provide your email address to receive a reset link for your password"
+                                                       delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Send", nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alertView.tag = 99;
+    [alertView show];
 }
 
 - (IBAction)loginUser:(id)sender {
@@ -155,6 +160,41 @@
 
 -(void) resignOnTap:(id)sender {
     [[self view] endEditing:YES];
+}
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
+
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    //NSLog(@"Callback Did!");
+    
+    NSLog(@"%@", [NSString stringWithFormat:@"Alert Button Index: %ld", (long)buttonIndex]);
+    
+    if(buttonIndex != 0) {
+        if (alertView.tag == 99) {
+            
+            //Retrive text from textfield and assign to pointer
+            NSString * emailAddress = [[alertView textFieldAtIndex: 0] text];
+            
+            [PFUser requestPasswordResetForEmailInBackground:emailAddress block:^(BOOL succeeded, NSError *error) {
+                if (error) {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry!"
+                                                                        message:[error.userInfo objectForKey:@"error"]
+                                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alertView show];
+                } else {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Password Reset Email Sent"
+                                                                        message:@"An email will arrive shortly that will allow for you to reset your password."
+                                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alertView show];
+                }
+            }];
+            
+            
+        }
+    }
+
 }
 
 #pragma mark - segue methods
