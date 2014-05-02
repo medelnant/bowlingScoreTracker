@@ -20,8 +20,6 @@
 @property NSMutableDictionary * detailedSession;
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
 
-- (void) gatherReportData;
-
 //Define IBOutlets for all UI Elements
 @property (weak, nonatomic) IBOutlet UILabel *summaryStrikeCount;
 @property (weak, nonatomic) IBOutlet UILabel *summarySpareCount;
@@ -29,5 +27,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *summarySinglePinSpares;
 @property (weak, nonatomic) IBOutlet UILabel *totalSeries;
 @property (weak, nonatomic) IBOutlet UILabel *totalAverage;
+
+- (void) sendPost;
+- (void) gatherReportData;
 
 @end

@@ -13,6 +13,12 @@
 		53176FE01911CFC500F404CE /* geoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53176FDE1911CFC500F404CE /* geoIcon@2x.png */; };
 		53176FE31911F22B00F404CE /* sessionDetailDivider.png in Resources */ = {isa = PBXBuildFile; fileRef = 53176FE11911F22B00F404CE /* sessionDetailDivider.png */; };
 		53176FE41911F22B00F404CE /* sessionDetailDivider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53176FE21911F22B00F404CE /* sessionDetailDivider@2x.png */; };
+		53176FE71913029D00F404CE /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 53176FE51913029D00F404CE /* logo.png */; };
+		53176FE81913029D00F404CE /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53176FE61913029D00F404CE /* logo@2x.png */; };
+		53176FEF191307DD00F404CE /* splashPage.png in Resources */ = {isa = PBXBuildFile; fileRef = 53176FED191307DD00F404CE /* splashPage.png */; };
+		53176FF0191307DD00F404CE /* splashPage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 53176FEE191307DD00F404CE /* splashPage2.png */; };
+		53176FF71913157D00F404CE /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 53176FF51913157D00F404CE /* share.png */; };
+		53176FF81913157D00F404CE /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53176FF61913157D00F404CE /* share@2x.png */; };
 		532FE11B190DB8BF00FBC9AD /* scoreWindow.png in Resources */ = {isa = PBXBuildFile; fileRef = 532FE119190DB8BF00FBC9AD /* scoreWindow.png */; };
 		532FE11C190DB8BF00FBC9AD /* scoreWindow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 532FE11A190DB8BF00FBC9AD /* scoreWindow@2x.png */; };
 		532FE11F190DB92000FBC9AD /* scoreWindowReflection.png in Resources */ = {isa = PBXBuildFile; fileRef = 532FE11D190DB92000FBC9AD /* scoreWindowReflection.png */; };
@@ -106,6 +112,12 @@
 		53176FDE1911CFC500F404CE /* geoIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geoIcon@2x.png"; sourceTree = "<group>"; };
 		53176FE11911F22B00F404CE /* sessionDetailDivider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sessionDetailDivider.png; sourceTree = "<group>"; };
 		53176FE21911F22B00F404CE /* sessionDetailDivider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sessionDetailDivider@2x.png"; sourceTree = "<group>"; };
+		53176FE51913029D00F404CE /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		53176FE61913029D00F404CE /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		53176FED191307DD00F404CE /* splashPage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashPage.png; sourceTree = "<group>"; };
+		53176FEE191307DD00F404CE /* splashPage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashPage2.png; sourceTree = "<group>"; };
+		53176FF51913157D00F404CE /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		53176FF61913157D00F404CE /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
 		532FE119190DB8BF00FBC9AD /* scoreWindow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoreWindow.png; sourceTree = "<group>"; };
 		532FE11A190DB8BF00FBC9AD /* scoreWindow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scoreWindow@2x.png"; sourceTree = "<group>"; };
 		532FE11D190DB92000FBC9AD /* scoreWindowReflection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoreWindowReflection.png; sourceTree = "<group>"; };
@@ -460,6 +472,12 @@
 		53A0D30D18F7781D00E34117 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				53176FF51913157D00F404CE /* share.png */,
+				53176FF61913157D00F404CE /* share@2x.png */,
+				53176FED191307DD00F404CE /* splashPage.png */,
+				53176FEE191307DD00F404CE /* splashPage2.png */,
+				53176FE51913029D00F404CE /* logo.png */,
+				53176FE61913029D00F404CE /* logo@2x.png */,
 				53176FE11911F22B00F404CE /* sessionDetailDivider.png */,
 				53176FE21911F22B00F404CE /* sessionDetailDivider@2x.png */,
 				53176FDD1911CFC500F404CE /* geoIcon.png */,
@@ -654,28 +672,34 @@
 				532FE130190DCF2200FBC9AD /* leftArrow@2x.png in Resources */,
 				53A0D30C18F7781700E34117 /* launchPage2.png in Resources */,
 				53EF8D4D190C779800367731 /* facebookLogin.png in Resources */,
+				53176FF71913157D00F404CE /* share.png in Resources */,
 				53E60E3C190078E800214176 /* pinButton_off@2x.png in Resources */,
 				53E60E3B190078E800214176 /* pinButton_off.png in Resources */,
 				5345DBF218F9DA5A00DD9D45 /* GameScoreCard.xib in Resources */,
 				53EF8D42190B557600367731 /* SessionDetailScoreCard.xib in Resources */,
+				53176FEF191307DD00F404CE /* splashPage.png in Resources */,
 				53176FE31911F22B00F404CE /* sessionDetailDivider.png in Resources */,
 				532FE138190DD9B600FBC9AD /* navigationMenuIcon@2x.png in Resources */,
 				53EF8D51190C812C00367731 /* background.png in Resources */,
 				53E60E39190078E800214176 /* pinButton_on@2x.png in Resources */,
+				53176FE81913029D00F404CE /* logo@2x.png in Resources */,
 				532FE12B190DCE9400FBC9AD /* rightArrow.png in Resources */,
 				53670BF418F171CD0027F9EE /* Images.xcassets in Resources */,
 				532FE137190DD9B600FBC9AD /* navigationMenuIcon.png in Resources */,
 				532FE11F190DB92000FBC9AD /* scoreWindowReflection.png in Resources */,
 				53A0D30B18F7781700E34117 /* launchPage.png in Resources */,
+				53176FE71913029D00F404CE /* logo.png in Resources */,
 				532FE12C190DCE9400FBC9AD /* rightArrow@2x.png in Resources */,
 				53670BE618F171CD0027F9EE /* InfoPlist.strings in Resources */,
 				53EF8D4E190C779800367731 /* facebookLogin@2x.png in Resources */,
 				532FE123190DC2EE00FBC9AD /* bowlingLaneBg.png in Resources */,
 				532FE12F190DCF2200FBC9AD /* leftArrow.png in Resources */,
 				5345DC0D18FA1BC200DD9D45 /* PinPadEntry.xib in Resources */,
+				53176FF0191307DD00F404CE /* splashPage2.png in Resources */,
 				5345DBEF18F9A3CA00DD9D45 /* bst_gameScoreCardLines@2x.png in Resources */,
 				5345DC0318FA0C4800DD9D45 /* KeyPadEntry.xib in Resources */,
 				532FE11C190DB8BF00FBC9AD /* scoreWindow@2x.png in Resources */,
+				53176FF81913157D00F404CE /* share@2x.png in Resources */,
 				53E60E3A190078E800214176 /* pinButton_on.png in Resources */,
 				532FE11B190DB8BF00FBC9AD /* scoreWindow.png in Resources */,
 				53176FE41911F22B00F404CE /* sessionDetailDivider@2x.png in Resources */,

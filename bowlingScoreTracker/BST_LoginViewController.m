@@ -20,6 +20,12 @@
 
 @implementation BST_LoginViewController 
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -66,8 +72,7 @@
     _createAccountButton.layer.borderColor = [[UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1] CGColor];
     
     [[self.navigationController.navigationBar viewWithTag:66] removeFromSuperview];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.81 green:0.3 blue:0.36 alpha:1];
     

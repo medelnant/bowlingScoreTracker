@@ -16,6 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="f0A-Wa-8GT">
+                                <rect key="frame" x="82" y="73" width="157" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ub9-s1-eQ2">
                                 <rect key="frame" x="20" y="146" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -224,6 +228,10 @@
                                     <action selector="registerUser:" destination="wmy-VE-Uvv" eventType="touchUpInside" id="WAx-Lk-kDV"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rwr-0a-LX5">
+                                <rect key="frame" x="82" y="73" width="157" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1658,6 +1666,7 @@
     <resources>
         <image name="facebookLogin.png" width="174" height="36"/>
         <image name="leftArrow.png" width="38" height="38"/>
+        <image name="logo.png" width="157" height="60"/>
         <image name="rightArrow.png" width="38" height="38"/>
         <image name="scoreWindowReflection.png" width="319" height="48"/>
         <image name="sessionDetailDivider.png" width="320" height="40"/>
@@ -1668,8 +1677,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="VCi-hx-q3T"/>
         <segue reference="0AT-Ea-pIa"/>
-        <segue reference="APV-Yj-FvI"/>
         <segue reference="cY9-7J-tcd"/>
     </inferredMetricsTieBreakers>
 </document>

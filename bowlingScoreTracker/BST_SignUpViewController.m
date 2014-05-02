@@ -122,6 +122,10 @@
     
 }
 
+-(void)viewWillDisappear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
 }
 

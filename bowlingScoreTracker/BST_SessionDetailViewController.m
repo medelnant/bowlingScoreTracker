@@ -12,6 +12,7 @@
 
 #import "BST_SessionDetailViewController.h"
 #import "BST_SessionGameCardTableViewCell.h"
+#import <Social/Social.h>
 
 @interface BST_SessionDetailViewController () {
 
@@ -21,6 +22,7 @@
     int spareCount;
     int singlePinLeaves;
     int singlePinSpares;
+    NSString * shareMessage;
 
 
 }
@@ -61,6 +63,12 @@
     
     //Add barButton left to trigger drawer slide open/close
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigationMenuIcon.png"] style:UIBarButtonItemStylePlain target:self.revealViewController action:@selector( revealToggle: )];
+    
+    //Add barButton right to trigger drawer slide open/close
+    UIImage * shareImage = [UIImage imageNamed:@"share.png"];
+
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(sendPost)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:shareImage style:UIBarButtonItemStylePlain target:self action:@selector(sendPost)];
     
 
     [super viewDidLoad];
@@ -211,9 +219,23 @@
             _summaryStrikeCount.text = [NSString stringWithFormat:@"%d strikes", strikeCount];
             _summarySpareCount.text = [NSString stringWithFormat:@"%d spares out of %d", spareCount, nonStrikeCount];
             _summarySinglePinSpares.text = [NSString stringWithFormat:@"%d single pin spares out of %d", singlePinSpares, singlePinLeaves];
+            
+            shareMessage = [NSString stringWithFormat:@"I just bowled %ld games with a total series of %d. - Using Bowling Score Tracker iOS App", (long)gameCount, totalSeries];
 
         });
     });
+}
+
+- (void) sendPost {
+   
+    
+    
+    NSArray *activityItems = @[shareMessage];
+    
+    UIActivityViewController * activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    [self presentViewController:activityVC animated:YES completion:nil];
+    
+    
 }
 
 /*
